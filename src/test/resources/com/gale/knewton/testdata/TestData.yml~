@@ -1,0 +1,26 @@
+baseurl: https://s-login.cengage.com/cb/login.htm
+browser: firefox
+driverpath: "src/test/resources/com/gale/knewton/drivers/chromedriver.exe"
+seleniumserver: local
+remoteURL: http://172.16.3.173:4444
+explicitTimeOut: 50
+Environment: qaf
+debug:
+  pageObjects: yes
+     
+email:
+    send: yes
+    recepients: 
+     recepient1: anshulmathur@qainfotech.net
+propertyfilepath: "./src/test/resources/com/gale/knewton/testdata/TestData.properties"
+product:
+  Course:
+   Course1: "MindTap™ Sociology Instant Access for Andersen/Taylor/Logio's Sociology: The Essentials, 8th Edition"
+   Course2: "MindTapV2 Management Instant Access for Gulati/Mayo/Nohria's Management, 1st Edition"
+  QuizOption:  
+   GDA_SA_Quiz_Option: "knew_andersen/andersen_1_1.xml"
+   GDA_SA_Quiz_Option1: "knew_gulati/gulati_1_1.xml"
+
+
+
+
