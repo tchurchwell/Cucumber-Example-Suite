@@ -12,7 +12,9 @@ private JavascriptExecutor js;
 private String EscFrame_id1 = "104_NB_Main_IFrame";
 private String EscFrame_id2 = "easyXDM_activityService_cxp_target_provider";
 private String EscError_xpath = "(//*[@class='line'])[2]//P";
-
+private String btn_Next_Css = "input[value='Next']";
+private String inp_Answer_xpath = "(//*[@class='q4-choice']//input)[1]";
+private String inp_Submit_css = "input[value='Submit']";
 	
 public boolean isESCErrorDisplayed(String error){
 		switchToFrame(findElementById(EscFrame_id1));
@@ -49,6 +51,13 @@ public boolean isESCActivityDisplayedatStud(){
 	return findElementByCssPath(btn_Next_Css).isDisplayed();
 }
 
+public void navigateToQuestion(){
+		findElementByCssPath(btn_Next_Css).click();
+		switchToFrame(findElementById(EscFrame_id2));
+		findElementByXpath(inp_Answer_xpath).click();
+		findElementByCssPath(inp_Submit_css).click();
+		switchToDefaultContent();
+	}
 
 }
 

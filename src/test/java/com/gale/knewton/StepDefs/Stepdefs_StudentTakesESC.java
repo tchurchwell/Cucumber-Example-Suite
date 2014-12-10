@@ -20,6 +20,23 @@ public class Stepdefs_StudentTakesESC extends BaseWebComponent{
 	   logPassMessage("ESC activity launched successfully at student");
 	}
 	
+	//############## Student Submits ESC #################
+	@Given("^I should be on Exam Study Center page$")
+	public void i_should_be_on_Exam_Study_Center_page() throws Throwable {
+	    
+	}
+	
+	@When("^I answer one question$")
+	public void i_answer_one_question() throws Throwable {
+		escActivity = new ESCActivityPage();
+		escActivity.navigateToQuestion();
+	   
+	}
+
+	@When("^I click on Submit button$")
+	public void i_click_on_Submit_button() throws Throwable {
+	   	}
+
 
 
 

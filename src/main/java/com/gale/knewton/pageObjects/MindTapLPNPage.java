@@ -58,6 +58,7 @@ public class MindTapLPNPage extends BaseWebComponent {
 	}
 
 	public void clickEnter() {
+		hardWait(1);
 		findElementById(btn_enter_id).click();
 		findElementByCssPath(btn_closeOverlay_css).click();
 	}

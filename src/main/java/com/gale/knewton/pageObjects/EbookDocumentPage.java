@@ -22,6 +22,7 @@ public class EbookDocumentPage extends BaseWebComponent{
 	public boolean isUserOnEbookDocumentPage(){
 		boolean flag =false;
 		switchToFrame(findElementByClass(iframe_EbookDoc_class));
+		waitForSpinnerToDisappear();
 		hardWait(2);
 		flag = findElementById(section_EbookDoc_id).isDisplayed();
 		switchToDefaultContent();
