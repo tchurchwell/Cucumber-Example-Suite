@@ -10,13 +10,4 @@ Given I should be on Student's LPN page
 When I click the already linked ESC activity
 Then I am on Exam Study Center page
 
-@StudSubmitsESC
-Scenario: Student submits ESC activity
-Given I should be on Exam Study Center page
-When I answer one question
-And I click on Submit button
-  
-
-
-
  	 

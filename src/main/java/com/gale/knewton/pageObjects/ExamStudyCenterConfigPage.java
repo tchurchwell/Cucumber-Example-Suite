@@ -15,7 +15,7 @@ public class ExamStudyCenterConfigPage extends BaseWebComponent {
 	public String getExamStudyCenterHead(){
 		switchToDefaultContent();
 		switchToFrame(findElementById(iframe_distinctActivity_id));
-		hardWait(2);
+		hardWait(5);
 		heading =  findElementByXpath(label_examStudyCenter_xpath).getText();
 		return heading;	
 	}

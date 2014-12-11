@@ -101,7 +101,7 @@ public class BaseWebComponent {
      */
     public void fireOnClickJsEvent(String elementRef, String index){
         js.executeScript(""
-            + "var elem = document.getElementsByClassName('${elementRef}')[${index}];"
+            + "var elem = document.getElementsByClassName('"+elementRef+"')["+index+"];"
                 + "if( document.createEvent ) { "
                 + "   var evObj = document.createEvent('MouseEvents');" 
             + "    evObj.initEvent( 'click', true, false );" 
@@ -340,6 +340,7 @@ public class BaseWebComponent {
 		}
 		
 	}
+	
 
 	public void switchToDefaultContent() {
 		driver.switchTo().defaultContent();
