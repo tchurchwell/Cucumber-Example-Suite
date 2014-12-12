@@ -16,6 +16,7 @@ import cucumber.api.junit.Cucumber;
 tags={"@Smoke"},
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
+
 public class Test_Smoke {
 	@BeforeClass
 	public static void classSetup() {

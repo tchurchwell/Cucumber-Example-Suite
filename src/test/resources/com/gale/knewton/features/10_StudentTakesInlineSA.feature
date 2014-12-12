@@ -4,14 +4,14 @@ Feature: Student takes Groove Inline Activity - Simple Assessment Activity
   When I log in to MindTap course,
   I can take - launch and submit inline Simple Assessment activity
 
- @StudLaunchInlineSA @StuLaunchSubmitDistnctInline @Smoke
+ @StudLaunchInlineSA @StuLaunchSubmitInline @Smoke
  Scenario: Launch inline Simple Assessment distinct activity
  	Given I should be on Student's LPN page
  	And I Navigate to the First Ebook Document
  	When I click start for the linked inline Simple Assessment activity
  	Then I am on inline Simple Assessment activity page
  	
- 	@StudSubmitInlineSA @StuLaunchSubmitDistnctInline @Smoke
+ 	@StudSubmitInlineSA @StuLaunchSubmitInline @Smoke
  Scenario: Submit inline Simple Assessment distinct activity
  	Given I should be on inline Simple Assessment activity overview page
  	When I click Start Activity and submit answer for a Question

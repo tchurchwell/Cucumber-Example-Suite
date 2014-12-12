@@ -329,7 +329,7 @@ public class BaseWebComponent {
 	public void switchBackToMainWindow() {
 		driver.switchTo().window(mainWindowHandle);
 	}
-
+	
 	public void switchToFrame(WebElement element) {
 		try{
 			waitForElementToAppear(element);
@@ -433,11 +433,11 @@ public class BaseWebComponent {
         int i = 0;
         resetImplicitTimeout(2);
         try{
-            List <WebElement> spinnerGifs = driver.findElements(By.xpath("//img[contains(@src, '/nb/ui/images/savingAnimation_')]"));
+            List <WebElement> spinnerGifs = driver.findElements(By.xpath("//div[@class='spinner']/div/div"));
             if (spinnerGifs.size()>0){
                 for (WebElement spinnerGif : spinnerGifs){
                     while (spinnerGif.isDisplayed() && i <= AJAX_TIMEOUT){
-                       hardWait(2);;
+                       hardWait(2);
                         i ++;
                     }
                 }

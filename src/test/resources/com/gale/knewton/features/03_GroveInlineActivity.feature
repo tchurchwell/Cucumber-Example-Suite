@@ -4,7 +4,7 @@ Feature: instructor access Groove Inline Activity and its linking on Ebook Docum
   When I log in to MindTap course,
   I land on MindTap LP for course, navigate to Ebook document and access Groove Inline Activity and its available features
 
- @AccessinlineSAAndlinkToEBook @Smoke
+ @AccessinlineSAAndlinkToEBook 
  Scenario: I want to access Groove Inline Activity and link as inline activity
  	Given I should be on instructor's LPN page
  	And I Navigate to the First Ebook Document

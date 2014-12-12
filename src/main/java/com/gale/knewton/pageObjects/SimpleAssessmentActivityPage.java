@@ -27,7 +27,9 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		try
 			{
 				logMessage("Switch to Frame 1");
+				hardWait(1);
 				switchToFrame(findElementByClass(frame1_Submit_class));
+				hardWait(1);
 				logMessage("Switch to Frame 2");
 				switchToFrame(findElementById(frame2_Submit_id));
 				resetImplicitTimeout(20);

@@ -8,7 +8,7 @@ import com.gale.knewton.util.YamlReader;
 
 public class EbookDocumentPage extends BaseWebComponent{
 	
-	private String iframe_EbookDoc_class = "ereader_iframe";
+	private String iframe_EbookDoc_xpath = "(//iframe[@class='ereader_iframe'])[1]";
 	private String img_close_xpath = "//a[contains(@title,'Close Activity')]";
 	private String section_EbookDoc_id = "ebook_document";
 	private String lnk_editMode_xpath = "//a[@title='Edit mode']";
@@ -21,8 +21,9 @@ public class EbookDocumentPage extends BaseWebComponent{
 	
 	public boolean isUserOnEbookDocumentPage(){
 		boolean flag =false;
-		switchToFrame(findElementByClass(iframe_EbookDoc_class));
-		waitForSpinnerToDisappear();
+		hardWait(1);
+		switchToFrame(findElementByXpath(iframe_EbookDoc_xpath));
+		//waitForSpinnerToDisappear();
 		hardWait(2);
 		flag = findElementById(section_EbookDoc_id).isDisplayed();
 		switchToDefaultContent();
@@ -30,7 +31,7 @@ public class EbookDocumentPage extends BaseWebComponent{
 		}
 	
 	public void openActivityPanelByEditMode() {
-		switchToFrame(findElementByClass(iframe_EbookDoc_class));
+		switchToFrame(findElementByXpath(iframe_EbookDoc_xpath));
 		findElementByXpath(lnk_editMode_xpath).click();
 		findElementByXpath(lnk_addInlineActivity_xpath).click();
 		switchToDefaultContent();
@@ -39,7 +40,7 @@ public class EbookDocumentPage extends BaseWebComponent{
 	
 	public boolean verifySimpleAssessmentOnEbook() {
 		boolean flag = false; 
-		switchToFrame(findElementByClass(iframe_EbookDoc_class));
+		switchToFrame(findElementByXpath(iframe_EbookDoc_xpath));
 		hardWait(1);
 		flag = findElementByXpath(getLocator(link_inlineActivityName_xpath, PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", (YamlReader.getData("propertyfilepath"))))).isDisplayed();
 		switchToDefaultContent();
@@ -47,7 +48,7 @@ public class EbookDocumentPage extends BaseWebComponent{
 	}
 
 	public void clickInlineSA_Activity() {
-		switchToFrame(findElementByClass(iframe_EbookDoc_class));
+		switchToFrame(findElementByXpath(iframe_EbookDoc_xpath));
 		logMessage("Click Start Button");
 		findElementByXpath(getLocator(btn_start_xpath, PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", (YamlReader.getData("propertyfilepath"))))).click();
 		switchToDefaultContent();

@@ -10,4 +10,8 @@ Given I should be on Student's LPN page
 When I click the already linked ESC activity
 Then I am on Exam Study Center page
 
+  
+
+
+
  	 
