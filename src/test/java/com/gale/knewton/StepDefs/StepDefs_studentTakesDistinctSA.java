@@ -10,7 +10,7 @@ import cucumber.api.java.en.Then;
 public class StepDefs_studentTakesDistinctSA extends BaseWebComponent {
 	private MindTapLPNPage mindtapLPNPage;
 		
-	//****************Submit Distinct Simple Assessment from Student***********
+	//****************  SUBMIT DISTINCT SA (STUDENT)  ***********
 	
 	@Then("^I am on Student's LPN page$")
 	public void i_am_on_students_LPN_page()

@@ -35,7 +35,7 @@ public class AddActivityPanelPage extends BaseWebComponent {
 
 	public String verifyCreationTypeForGroveActivity() {
 		switchToFrame(findElementById(iframe_distinctActivity_id));
-		String getSimpleAssessment = findElementByXpath(btn_simpleAssessment_xpath).getText();
+		String getSimpleAssessment = waitAndLocateElementByXpath(btn_simpleAssessment_xpath).getText();
 		switchToDefaultContent();
 		return getSimpleAssessment;
 	}
@@ -51,7 +51,7 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	}
 
 	public void clickPublish() {
-		findElementByXpath(btn_publish_xpath).click();
+		waitAndLocateElementByXpath(btn_publish_xpath).click();
 		switchToDefaultContent();
 	}
 	

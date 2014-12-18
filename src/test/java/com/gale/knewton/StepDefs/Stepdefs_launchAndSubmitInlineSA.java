@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.EbookDocumentPage;
+import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SimpleAssessmentActivityPage;
 
 import cucumber.api.java.en.And;
@@ -14,6 +15,7 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 
 	private SimpleAssessmentActivityPage simpleAssessmentActivityPage;
 	private EbookDocumentPage ebookDocumentPage;
+	private MindTapLPNPage mindtaplpn;
 	
 	
 	private boolean flag;
@@ -72,7 +74,10 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	@Then("^I am on Ebook Document Page$")
 	public void i_am_on_ebook_document_page(){
 		ebookDocumentPage = new EbookDocumentPage();
+		mindtaplpn = new MindTapLPNPage();
 		Assert.assertTrue("Not navigated to Ebook Document Page",ebookDocumentPage.isUserOnEbookDocumentPage());
 		logPassMessage("Successfully navigated to ebook document page");
+		ebookDocumentPage.closeEbook();
+		mindtaplpn.navigateToBaseLPN();
 	}
 }

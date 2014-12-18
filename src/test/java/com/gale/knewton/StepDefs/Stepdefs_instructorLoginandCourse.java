@@ -17,7 +17,8 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	//##############################---Instructor Login/Logout---####################################
 	private SSOInstructorDashboardPage ssoDashBoardPage;
 	private LoginPage loginPage;
-
+	
+	
 	@Given("^I am on the Cengage Learning Login Page to login as instructor$")
 	public void I_am_on_the_Cengage_Learning_Login_Page() throws Throwable {
 		loginPage = new LoginPage();
@@ -100,7 +101,7 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	    createCoursePage.clickReturnDashboard();
 	}
 	
-	//#########################Accept Eula######################
+	//#########################   Accept Eula   ######################
 
 	@Given("^I click newly created course$")
 	public void i_click_newly_created_course() {
@@ -118,17 +119,19 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	@When("^verify presence of Eula and accept EULA if present$")
 	public void verify_presence_of_Eula_and_accept_EULA_if_present() {
 		mindTapLPNPage = new MindTapLPNPage();
-	    
-	    	if(mindTapEulaPage.isEulaDisplayed()){
+	   	resetImplicitTimeout(10);
+		try{
+			   	if(mindTapEulaPage.isEulaDisplayed()){
 	    		mindTapEulaPage.clickAcceptButton();
 	    		logPassMessage("Eula page appeared and Accepted");
-		    	mindTapLPNPage.clickEnter();
-	    	}
-	    	
-	    	else{
-	    		logMessage("Eula did not appeared");
-	    		Assert.assertTrue("Instructor MindTap LPN did not appear",mindTapLPNPage.getInstLPNDisplayed());
-	    		logPassMessage("Instructor LPN page displayed");
-	    	    }
+	    		mindTapLPNPage.clickEnter();
+			   	}	    	
+			}
+		catch (Exception e){
+	    	System.out.println("*************EXCEPTION  "+e);
+	    	logMessage("Eula did not appeared");
+    		Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
+    		logPassMessage("Instructor LPN page displayed");
+	    	}	
 	}
 }

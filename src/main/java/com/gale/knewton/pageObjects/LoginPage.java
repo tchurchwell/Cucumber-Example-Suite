@@ -30,13 +30,12 @@ public class LoginPage extends BaseWebComponent{
 	}
 	
 	public void LaunchLoginpage(){
-		boolean flag;
-		flag=isUserOnLoginPage();
-		if(flag)
-				  logPassMessage("User is on Login page");
-		else
+		if(isUserOnLoginPage())
+			logPassMessage("User is on Login page");
+		else{
 			logMessage("Navigate to base url");
 			NavigateToBaseUrl();
+		}
 	}
 	
 }

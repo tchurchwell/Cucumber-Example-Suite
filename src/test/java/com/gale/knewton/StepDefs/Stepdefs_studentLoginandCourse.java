@@ -22,8 +22,9 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 	private CoursePaymentPage coursePaymentPage;
 	private MindTapEulaPage mindTapEulaPage;
 	private MindTapLPNPage mindTapLPNPage;
-
-	// *************************Student Login*******************************
+	
+	
+	// ************************* Student Login *******************************
 
 	@Given("^I am on the Cengage Learning Login Page to login as student$")
 	public void I_am_on_the_Cengage_Learning_Login_Page() throws Throwable {
@@ -114,12 +115,6 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 		mindTapEulaPage = new MindTapEulaPage();
 		resetImplicitTimeout(10);
 		try {
-			if (mindTapLPNPage.isLPNDisplayedAtStudent()) {
-				logPassMessage("LPN page is displayed directly while launching the course");
-			}
-
-		} catch (Exception e) {
-			logMessage("LPN page not displayed");
 			if (mindTapEulaPage.isEulaDisplayed()) {
 				mindTapEulaPage.clickAcceptButton();
 				logPassMessage("Eula page is displayed and accepted for student");
@@ -127,7 +122,12 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 				Assert.assertTrue("LPN page is not displayed",
 						mindTapLPNPage.isLPNDisplayedAtStudent());
 				logPassMessage("LPN page is displayed after accepting Eula page");
-			} else {
+			}
+		}catch (Exception e) {
+			if (mindTapLPNPage.isLPNDisplayedAtStudent()) {
+				logPassMessage("LPN page is displayed directly while launching the course");
+			}
+			else {
 				logWarningMessage("Exception " + e);
 			}
 		}

@@ -61,8 +61,7 @@ private String link_open_xpath="//a[contains(@href,'${courseKey}')]";
 
 	public void clickOpen() {
 		courseKey = PropFileHandler.readProperty("CourseKey", YamlReader.getData("propertyfilepath"));
-		hardWait(1);
-		findElementByXpath(getLocator(link_open_xpath, courseKey)).click();
+		waitAndLocateElementByXpath(getLocator(link_open_xpath, courseKey)).click();
 	}
 	
 }

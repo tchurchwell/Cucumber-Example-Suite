@@ -6,10 +6,11 @@ import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.ESCActivityPage;
 import cucumber.api.java.en.Then;
 
-public class Stepdefs_StudentTakesESC extends BaseWebComponent{
+public class Stepdefs_studentTakesESC extends BaseWebComponent{
 	private ESCActivityPage escActivity;
 	
-	//######### Student Launches ESC###########
+	//#################   Student Launches ESC  ###########
+	
 	@Then("^I am on Exam Study Center page$")
 	public void i_am_on_Exam_Study_Center_page() {
 		escActivity = new ESCActivityPage();

@@ -2,11 +2,10 @@ package com.gale.knewton.pageObjects;
 
 
 import com.gale.knewton.base.BaseWebComponent;
-import com.gale.knewton.util.YamlReader;
 
 public class MindTapEulaPage extends BaseWebComponent{
 	
-	private String div_eula_class = "eula";
+	private String div_eula_xpath = "//*[@class='eula']";
 	private String btn_accept_css = ".adminButton.accept";
 	private boolean flag = false;
 	private String currentPageUrl;
@@ -23,12 +22,8 @@ public class MindTapEulaPage extends BaseWebComponent{
 	}
 	
 	public boolean isEulaDisplayed(){
-		String env = YamlReader.getYamlValue("Environment");
-		if(env.equals("qaf")){
-			hardWait(30);
-		}
 		logMessage("verify eula page");
-		return findElementByClass(div_eula_class).isDisplayed();
+		return waitAndLocateElementByXpath(div_eula_xpath).isDisplayed();
 	}
 	
 	public void clickAcceptButton() {

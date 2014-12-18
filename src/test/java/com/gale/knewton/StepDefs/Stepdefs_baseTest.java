@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.configuration.PropertiesConfiguration;
@@ -21,6 +20,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.util.YamlReader;
@@ -56,6 +56,8 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 				return getFirefoxDriver();
 			} else if (browser.equalsIgnoreCase("chrome")) {
 				return getChromeDriver(YamlReader.getYamlValue("driverpath"));
+			}else if(browser.equalsIgnoreCase("safari")){
+				return getSafariDriver();
 			}
 		}
 		if (server.equalsIgnoreCase("remote")) {
@@ -95,6 +97,11 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 		System.setProperty("webdriver.chrome.driver", driverpath);
 		capabilities.setJavascriptEnabled(true);
 		return new ChromeDriver(capabilities);
+	}
+	
+	private static WebDriver getSafariDriver(){
+		capabilities.setJavascriptEnabled(true);
+		return new SafariDriver();
 	}
 
 	private static WebDriver getFirefoxDriver() {

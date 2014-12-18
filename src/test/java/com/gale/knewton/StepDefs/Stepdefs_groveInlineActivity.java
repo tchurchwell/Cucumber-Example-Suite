@@ -22,12 +22,22 @@ public class Stepdefs_groveInlineActivity extends BaseWebComponent {
 	private AddActivityPanelPage addActivityPage;	
 	private MindTapDescriptionPage mindTapDescriptionPage;
 	
+	private boolean flag=false;
+	
+	//********************** CREATE INILINE ACTIVITY *********************
+	
 	@And("^I Navigate to the First Ebook Document")
 	public void navigate_To_EBookDocument(){
 		mindTapLPNPage = new MindTapLPNPage();
 		mindTapLPNPage.navigateToEBookDocument();
 		eBookDocPage = new EbookDocumentPage();
-		Assert.assertTrue("User is not on the Ebook Document Page", eBookDocPage.isUserOnEbookDocumentPage());
+		flag = eBookDocPage.isUserOnEbookDocumentPage();
+		if(!flag){
+			refresh();
+			flag = eBookDocPage.isUserOnEbookDocumentPage();
+		}
+		Assert.assertTrue("User is not on the Ebook Document Page", flag);
+		logPassMessage("User is successfully navigated to Ebook page");
 	}
 	
 	@And("^I enter the Edit Mode to reach Add Activity Panel")

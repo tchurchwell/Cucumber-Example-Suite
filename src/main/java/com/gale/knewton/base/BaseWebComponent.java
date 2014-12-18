@@ -47,7 +47,7 @@ public class BaseWebComponent {
 	private WebElement waitForElementToAppear(WebElement element) {
 		return wait.until(ExpectedConditions.visibilityOf(element));
 	}
-
+	
 	protected void switchDriverToPopUp() {
 		String mainWindowHandle = driver.getWindowHandle();
 		String popupWindowHandle = null;
@@ -246,6 +246,11 @@ public class BaseWebComponent {
 				.findElement(By.cssSelector(replaceCssWithIndex(elementUid,
 						cssIndex, secIndex))));
 	}
+	
+	public WebElement waitAndLocateElementByXpath(String elementUid){
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementUid)));
+	}
+	
 
 	public String getStandardWaitTime() {
 		return envProperties.getString("STANDARD_PAGE_LOAD_WAIT_TIME");

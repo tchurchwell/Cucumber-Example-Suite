@@ -8,7 +8,7 @@ import com.gale.knewton.util.YamlReader;
 public class MindTapLPNPage extends BaseWebComponent {
 
 	private String div_LPN_link = "Course";
-	private String div_LPNstud_link = "Detail";
+	private String div_LPNstud_xpath = "//*[text()='Detail']";
 	private String btn_add_css = "a.navLink.menu_trigger";
 	private String btn_addActivity_css = "li.menu_item.activity > a";
 	private String btn_enter_id = "nb_enter";
@@ -28,7 +28,6 @@ public class MindTapLPNPage extends BaseWebComponent {
 	
 
 
-
 	public boolean getInstLPNDisplayed() {
 		hardWait(5);
 		boolean flag;
@@ -43,8 +42,7 @@ public class MindTapLPNPage extends BaseWebComponent {
 	}
 	
 	public boolean isLPNDisplayedAtStudent() {
-		hardWait(1);
-		return	findElementByLinkText(div_LPNstud_link).isDisplayed();
+		return waitAndLocateElementByXpath(div_LPNstud_xpath).isDisplayed();
 	}
 	
 	public boolean isLPNDisplayedAtInstructor() {
@@ -58,10 +56,17 @@ public class MindTapLPNPage extends BaseWebComponent {
 	}
 
 	public void clickEnter() {
-		hardWait(1);
-		findElementById(btn_enter_id).click();
-		findElementByCssPath(btn_closeOverlay_css).click();
-	}
+		resetImplicitTimeout(5);
+		try	{
+			hardWait(1);
+			findElementById(btn_enter_id).click();
+			findElementByCssPath(btn_closeOverlay_css).click();
+			}
+		catch (Exception e){
+			
+		}
+		}
+		
 
 	public void clickAddActivitybutton() {
 		hardWait(1);
