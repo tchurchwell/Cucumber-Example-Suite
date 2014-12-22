@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
-tags={"@LoginLaunch, @StudentLoginAndLaunchCourse"},
+tags={"@StudentLoginAndLaunchCourse, @StudLaunchESC, @StuVerifyESC, @StuClosesESC"},
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
 /* Cucumber tags
@@ -19,7 +19,7 @@ format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
  * Student: @LoginEnrollAndAcceptEula, @StudentLoginAndLaunchCourse
  * GDA: @AccessGDAAndlinkSimpleAssessment, @LaunchSubmitSA, @StuLaunchSubmitDistnct
  * GIA: @StuLaunchSubmitInline, @LaunchSubmitInlineSA, @AccessinlineSAAndlinkToEBook
- * ESC: @AccessESCandLinkToLPN, @InstLaunchESC, @StudLaunchESC
+ * ESC: @AccessESCandLinkToLPN, @InstLaunchESC, @StudLaunchESC, @StuVerifyESC, @StuClosesESC
  */
 
 public class Test_SpecificFeature {

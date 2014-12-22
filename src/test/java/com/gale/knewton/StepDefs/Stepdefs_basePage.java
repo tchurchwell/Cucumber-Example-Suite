@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.AddActivityPanelPage;
+import com.gale.knewton.pageObjects.ESCActivityPage;
 import com.gale.knewton.pageObjects.EbookDocumentPage;
 import com.gale.knewton.pageObjects.ExamStudyCenterConfigPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
@@ -18,6 +19,7 @@ public class Stepdefs_basePage extends BaseWebComponent {
 	private ExamStudyCenterConfigPage escConfigPage;
 	private SimpleAssessmentActivityPage simpleAssessmentActivityPage;
 	private EbookDocumentPage eBookDocPage;
+	private ESCActivityPage escPage;
 	
 	private String lbl_addActivityHeading_xpath = "//h1[text()='Add Activity']";
 	private String lbl_GDAHeading_xpath = "//span[contains(text(),' Select Grove Distinct Activity')]";
@@ -48,7 +50,7 @@ public class Stepdefs_basePage extends BaseWebComponent {
 		Assert.assertEquals("Add Activity page do not appear","Add Activity",findElementByXpath(lbl_addActivityHeading_xpath).getText());
 		logPassMessage("I am on Add Activity page");
 		addActivityPage = new AddActivityPanelPage(); 
-		addActivityPage.selectGrooveDistinctActivity();
+		addActivityPage.selectGroveDistinctActivity();
 		Assert.assertEquals("Select Grove Distinct Activity page do not appear","Select Grove Distinct Activity",findElementByXpath(lbl_GDAHeading_xpath).getText());
 	}
 	
@@ -107,5 +109,14 @@ public class Stepdefs_basePage extends BaseWebComponent {
 			logPassMessage("Simple Assessment(inline) activity page displayed successfully");
 		}
 	}
+	
+	@Given("^I should be on Exam Study Center page$")
+	public void i_should_be_on_Exam_Study_Center_page() {
+	 escPage = new ESCActivityPage();
+	 Assert.assertTrue("Student is not on ESC activity page", escPage.isESCActivityDisplayedatStud());
+	 logPassMessage("Student is on ESC activity page");
+	   
+	}
+
 	
 }

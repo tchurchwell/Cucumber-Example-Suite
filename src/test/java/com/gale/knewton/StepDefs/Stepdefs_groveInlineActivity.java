@@ -48,7 +48,7 @@ public class Stepdefs_groveInlineActivity extends BaseWebComponent {
 	@Then("^select Grove Inline Activity from the Activity list$")
 	public void select_Grove_Distinct_Activity_from_the_list() {
 		addActivityPage = new AddActivityPanelPage();
-		addActivityPage.selectGrooveInlineActivity();
+		addActivityPage.selectGroveInlineActivity();
 	}
 	
 	@Then("^verify creation type display as \"(.*?)\"$")

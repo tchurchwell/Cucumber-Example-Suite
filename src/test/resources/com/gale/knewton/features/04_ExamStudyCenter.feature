@@ -3,7 +3,7 @@ Feature: Access Exam Study Center and and verify its linking on LPN
   When I log in to MindTap course,
   I should be able to access Exam Study Center and and verify its linking on LPN.
 
-   @AccessESCandLinkToLPN 
+   @AccessESCandLinkToLPN @Smoke
    Scenario: Access Exam Study Center Configurations page
      Given I am on Add Activity List
      When I click Exam Study Center from Activities list

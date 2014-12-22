@@ -4,7 +4,7 @@
   When I log in to MindTap course,
   I can preview i.e. - launch Exam Study Center(ESC) Activity
 
- @InstLaunchESC 
+ @InstLaunchESC @Smoke
  Scenario Outline: Launch ESC Activity
  	Given I should be on instructor's LPN page
  	When I click the already linked ESC activity

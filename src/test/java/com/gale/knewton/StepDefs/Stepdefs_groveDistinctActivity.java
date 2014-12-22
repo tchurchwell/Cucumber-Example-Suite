@@ -20,7 +20,7 @@ public class Stepdefs_groveDistinctActivity extends BaseWebComponent {
 
 	@Then("^I select Grove Distinct Activity from the list$")
 	public void I_select_Grove_Distinct_Activity_from_the_list() {
-		addActivityPage.selectGrooveDistinctActivity();
+		addActivityPage.selectGroveDistinctActivity();
 	}
 	
 	@Then("^Creation type display as \"(.*?)\"$")

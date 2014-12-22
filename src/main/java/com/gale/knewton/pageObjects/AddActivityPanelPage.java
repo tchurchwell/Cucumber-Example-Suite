@@ -19,12 +19,12 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	private String btn_cancelOnList_xpath = "(//*[contains(text(),'Cancel')])[1]";
 	private String btn_cancelOnActivity_xpath = "(//*[contains(text(),'Cancel')])[2]";
 
-	public void selectGrooveDistinctActivity() {
+	public void selectGroveDistinctActivity() {
 		resetImplicitTimeout(10);
 		findElementByXpath(link_gDA_xpath).click();
 	}
 
-	public void selectGrooveInlineActivity() {
+	public void selectGroveInlineActivity() {
 		findElementByXpath(link_groveInlineActivity_xpath).click();
 	}
 	
