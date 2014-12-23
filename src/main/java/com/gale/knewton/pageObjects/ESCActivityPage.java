@@ -1,6 +1,7 @@
 package com.gale.knewton.pageObjects;
 
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.util.PropFileHandler;
@@ -20,7 +21,10 @@ private String instChapter;
 	public boolean isESCErrorDisplayed(String error){
 		hardWait(1);
 		switchToFrame(findElementByCssPath(frame_Esc_css));
-		String errorinst = waitAndLocateElementByXpath(EscError_xpath).getText();
+		hardWait(1);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EscError_xpath)));
+		hardWait(1);
+		String errorinst = findElementByXpath(EscError_xpath).getText();
 		switchToDefaultContent();
 		return (error.equals(errorinst));
 	}

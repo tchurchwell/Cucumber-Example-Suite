@@ -23,9 +23,14 @@ public class CoursePaymentPage extends BaseWebComponent {
 			}
 		
 		else{
-			findElementByClass(btn_takeMeToMyCourse_class).click();
-			if((browser.equalsIgnoreCase("chrome")) || (browser.equalsIgnoreCase("firefox")))
-			changeWindow(1);
+			if(browser.equalsIgnoreCase("safari")){
+				modifyMindTapURL();
+				getUrl(courseUrl);
+			}else
+				{
+				findElementByClass(btn_takeMeToMyCourse_class).click();
+				changeWindow(1);
+				}
 			}
 		}
 	

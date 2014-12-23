@@ -36,9 +36,11 @@ public class Stepdefs_basePage extends BaseWebComponent {
 	
 	@Given("^I am on Exam Study Center configuration page$")
 	public void i_am_on_Exam_Study_Centre_configuration_page() {
+		String EscCenterHead;
 		escConfigPage = new ExamStudyCenterConfigPage();
-		System.out.println(escConfigPage.getExamStudyCenterHead());
-		Assert.assertTrue("Exam Study Center Configuration page not displayed", (escConfigPage.getExamStudyCenterHead()).equals("Exam Study Center - Configuration"));
+		EscCenterHead = escConfigPage.getExamStudyCenterHead();
+		System.out.println(EscCenterHead);
+		Assert.assertTrue("Exam Study Center Configuration page not displayed", (EscCenterHead).equals("Exam Study Center - Configuration"));
 	}
 	
 	@Given("^I am on Select Grove Distinct Activity page$")

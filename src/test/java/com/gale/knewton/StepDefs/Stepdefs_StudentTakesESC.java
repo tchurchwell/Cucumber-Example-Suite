@@ -41,5 +41,12 @@ public class Stepdefs_studentTakesESC extends BaseWebComponent{
 		  logPassMessage("Relevant chapter content found");
 	}
 	
-		
+	@When("^I click close icon$")
+	public void i_click_close_icon() {
+		escActivity = new ESCActivityPage();
+		escActivity.closeActivity();
+		logPassMessage("ESC activity closed successfully");
+	}
+
+	
 }

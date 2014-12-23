@@ -15,7 +15,8 @@ public class CreateCoursePage extends BaseWebComponent {
 	private String timeZone = "America/Mexico_City";
 
 	private String radio_createNewCourse_xpath = "//*[@id='createNewCourse']";
-	private String btn_continue_xpath = "//*[@id='courseOptionForm']/div[9]/a";
+	//private String btn_continue_linktext = "//*[@id='courseOptionForm']/div[9]/a";
+	private String btn_continue_linktext = "Continue";
 	private String inp_courseName_xpath = "//*[@id='courseName']";
 	private String inp_beginDate_xpath = "//*[@id='beginDate']";
 	private String inp_endDate_xpath = "//*[@id='endDate']";
@@ -29,7 +30,7 @@ public class CreateCoursePage extends BaseWebComponent {
 	public void selectCreateNewCourseRadioBtnAndContinue() {
 		findElementByXpath(radio_createNewCourse_xpath).click();
 		hardWait(1);
-		findElementByXpath(btn_continue_xpath).click();
+		findElementByLinkText(btn_continue_linktext).click();
 	}
 
 	public void enterCourseInformation() {
