@@ -17,7 +17,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  	| knewton_automation_inst01@qai.com | A123456  |
  		
  
- @CreateCourse @LogincreateLaunch @Smoke
+ @CreateCourse @LogincreateLaunch 
  Scenario: I want to create a new course
  	Given I am on the Cengage Learning instructor's sso dashboard
  	When I click Create Course hyperlink and navigate to create course page
@@ -33,7 +33,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  	And I click newly created course
  	Then I am on the MindTap window
 	 
- @AcceptEulaIfAppears @LogincreateLaunch @Smoke
+ @AcceptEulaIfAppears @LogincreateLaunch 
  Scenario: I want to accept EULA page for the newly created course
  	Given I am on the MindTap window
  	When verify presence of Eula and accept EULA if present
