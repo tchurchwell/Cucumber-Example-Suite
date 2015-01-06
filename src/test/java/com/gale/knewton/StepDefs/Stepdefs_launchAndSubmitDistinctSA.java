@@ -3,8 +3,10 @@ package com.gale.knewton.StepDefs;
 import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
+import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SimpleAssessmentActivityPage;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -52,8 +54,10 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 		simpleAssessmentActivityPage.checkMyWork();
 		Assert.assertTrue("Feedback not displayed", simpleAssessmentActivityPage.isFeedbackDisplayed());
 		logPassMessage("Feedback displayed successfully");
+		if(LoginPage.product.equals("Anderson")){
 		Assert.assertTrue("Try Another Version button not displayed", simpleAssessmentActivityPage.isTryAnotherVersionbtnDisplayed());
 		logPassMessage("Try Another Version button displayed");
+		}
 	}
 	
 	@And("^I submit Simple Assessment activity$")

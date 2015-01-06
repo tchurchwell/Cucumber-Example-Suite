@@ -11,8 +11,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
-tags={"@LoginEnrollAndAcceptEula, @StuLaunchSubmitDistnct, @StuLaunchSubmitInline, "
-		+ "@StudLaunchESC, @StuVerifyESC, @StuClosesESC "},
+tags={"@StudentLoginAndLaunchCourse, @StudLaunchESC, @StuVerifyESC, @StuClosesESC"},
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
 /* Cucumber tags

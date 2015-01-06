@@ -5,9 +5,11 @@ import org.junit.Assert;
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.CreateCoursePage;
 import com.gale.knewton.pageObjects.LoginPage;
+import com.gale.knewton.pageObjects.MindTapDashboardPage;
 import com.gale.knewton.pageObjects.MindTapEulaPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SSOInstructorDashboardPage;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -56,9 +58,7 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	//##############################---CreateCourse---####################################
 	private CreateCoursePage createCoursePage;
 	private SSOInstructorDashboardPage ssoInstructorDashboardPage;
-	private MindTapEulaPage mindTapEulaPage;
-	private MindTapLPNPage mindTapLPNPage;
-
+		
 	@Given("^I am on the Cengage Learning instructor's sso dashboard$")
 	public void i_am_on_the_Cengage_Learning_instructor_welcome_page() {
 		ssoInstructorDashboardPage = new SSOInstructorDashboardPage();
@@ -102,6 +102,9 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	}
 	
 	//#########################   Accept Eula   ######################
+	private MindTapLPNPage mindTapLPNPage;
+	private MindTapEulaPage mindTapEulaPage;
+	private MindTapDashboardPage mindTapDashboard;
 
 	@Given("^I click newly created course$")
 	public void i_click_newly_created_course() {
@@ -119,19 +122,21 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	@When("^verify presence of Eula and accept EULA if present$")
 	public void verify_presence_of_Eula_and_accept_EULA_if_present() {
 		mindTapLPNPage = new MindTapLPNPage();
+		mindTapDashboard = new MindTapDashboardPage();
 	   	resetImplicitTimeout(10);
 		try{
 			   	if(mindTapEulaPage.isEulaDisplayed()){
 	    		mindTapEulaPage.clickAcceptButton();
 	    		logPassMessage("Eula page appeared and Accepted");
-	    		mindTapLPNPage.clickEnter();
-			   	}	    	
+	     	}	    	
 			}
 		catch (Exception e){
-	    	System.out.println("*************EXCEPTION  "+e);
+			System.out.println("*************EXCEPTION  "+e);
 	    	logMessage("Eula did not appeared");
-    		Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
-    		logPassMessage("Instructor LPN page displayed");
-	    	}	
+	      	}	
+		mindTapLPNPage.clickEnter();
+		Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
+		logPassMessage("Instructor LPN page displayed");
+		
 	}
 }

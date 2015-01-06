@@ -14,10 +14,10 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_inst01@qai.com | A123456  |
+ 	| knewton_automation_inst02@qai.com | A123456  |
  		
  
- @CreateCourse @LogincreateLaunch 
+ @CreateCourse @LogincreateLaunch @Smoke
  Scenario: I want to create a new course
  	Given I am on the Cengage Learning instructor's sso dashboard
  	When I click Create Course hyperlink and navigate to create course page
@@ -30,10 +30,10 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  @LaunchCourse @LogincreateLaunch @LoginLaunch @Smoke
  Scenario: I want to launch the course from instructor's dashboard
 	Given I am on the Cengage Learning instructor's sso dashboard
- 	And I click newly created course
+ 	When I click newly created course
  	Then I am on the MindTap window
 	 
- @AcceptEulaIfAppears @LogincreateLaunch 
+ @AcceptEulaIfAppears @LogincreateLaunch @Smoke
  Scenario: I want to accept EULA page for the newly created course
  	Given I am on the MindTap window
  	When verify presence of Eula and accept EULA if present

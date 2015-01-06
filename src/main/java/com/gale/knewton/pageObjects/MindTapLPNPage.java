@@ -1,6 +1,13 @@
 package com.gale.knewton.pageObjects;
 
 
+
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.util.PropFileHandler;
 import com.gale.knewton.util.YamlReader;
@@ -16,8 +23,11 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String btn_homeIcon_id = "nb_lpLauncher";
 	private String img_back_xpath = "//*[text()='back']";
 
-	private String img_firstChapterFolderOnLPN_xpath = "(//*[@class='lpn_thumbImage'])[1]";
+	private String img_firstUnit_xpath = "(//*[@class='lpn_thumbImage'])[1]";
 	private String div_thumbar_xpath = "//div[contains(@title,'Reading')][1]";
+	private String img_ChapterFolderGul_xpath = "(//img[@title='Folder'])[1]";
+	private String img_expandedFolders_xpath = "//img[@title='Folder' and parent::div[contains(@class,'lpn_group_expanded')]]";
+	
 
 	private String link_activityName_xpath = "//a[contains(.,'${activitytitle}')]";
 	private String activityDynamicXpath;
@@ -26,7 +36,12 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String ESCactivitydynamicxpath;
 	
 	
-
+public void collapseLPNFolders(){
+	hardWait(2);
+	List<WebElement> folders = driver.findElements(By.xpath(img_expandedFolders_xpath));
+	for(WebElement folder : folders)
+	folder.click();
+}
 
 	public boolean getInstLPNDisplayed() {
 		hardWait(5);
@@ -75,11 +90,21 @@ public class MindTapLPNPage extends BaseWebComponent {
 	}
 
 	public void navigateToEBookDocument() {
-		hardWait(1);
-		findElementByXpath(img_firstChapterFolderOnLPN_xpath).click();
-		hardWait(2);
-		findElementByXpath(div_thumbar_xpath).click();
-		
+		if(LoginPage.product.equals("Anderson")){
+			hardWait(1);
+			findElementByXpath(img_firstUnit_xpath).click();
+			hardWait(2);
+			findElementByXpath(div_thumbar_xpath).click();
+		}
+		else
+			if(LoginPage.product.equals("Gulati")){
+			hardWait(1);
+			findElementByXpath(img_ChapterFolderGul_xpath).click();
+			hardWait(1);
+			findElementByXpath(img_firstUnit_xpath).click();
+			hardWait(3);
+			findElementByXpath(div_thumbar_xpath).click();
+			}	
 	}
 
 
@@ -120,8 +145,17 @@ public class MindTapLPNPage extends BaseWebComponent {
 	}
 	
 	public void navigateToBaseLPN(){
+		if(LoginPage.product.equals("Anderson")){
 		hardWait(3);
 		findElementByXpath(img_back_xpath).click();
+		}
+		else
+			if(LoginPage.product.equals("Gulati"))
+			{
+				hardWait(3);
+				findElementByXpath(img_back_xpath).click();
+				collapseLPNFolders();				
+			}
 	}
 		
 	public boolean getStudLPNDisplayed(){

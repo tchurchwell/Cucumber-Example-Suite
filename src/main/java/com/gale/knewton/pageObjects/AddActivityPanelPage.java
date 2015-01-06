@@ -14,7 +14,8 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	private String Link_examStudyCenter_xpath = "//h3[@class='activityName' and text()='Exam Study Center']";
 	
 	private String btn_toggle_xpath = "//button[@class='toggle']";
-	private String btn_radioBtnQuiz_xpath = " (//span[contains(text(),'Practice')])[1]/preceding-sibling::input";
+	private String btn_radioBtnPractice_xpath = "(//span[contains(text(),'Practice')])[1]/preceding-sibling::input";
+	private String btn_radioBtnQuiz_xpath = "(//span[contains(text(),'Quiz')])[1]/preceding-sibling::input";
 	private String btn_publish_xpath = "//button[contains(text(),'Publish')]";
 	private String btn_cancelOnList_xpath = "(//*[contains(text(),'Cancel')])[1]";
 	private String btn_cancelOnActivity_xpath = "(//*[contains(text(),'Cancel')])[2]";
@@ -47,7 +48,11 @@ public class AddActivityPanelPage extends BaseWebComponent {
 
 	public void expandAndSelectRadioForSimpleAssess() {
 		findElementByXpath( btn_toggle_xpath).click();
-		findElementByXpath(btn_radioBtnQuiz_xpath).click();
+		if(LoginPage.product.equals("Anderson"))
+		findElementByXpath(btn_radioBtnPractice_xpath).click();
+		else
+			if(LoginPage.product.equals("Gulati"))
+				findElementByXpath(btn_radioBtnQuiz_xpath).click();				
 	}
 
 	public void clickPublish() {

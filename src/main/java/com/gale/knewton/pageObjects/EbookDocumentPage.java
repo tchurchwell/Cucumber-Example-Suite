@@ -47,7 +47,9 @@ public class EbookDocumentPage extends BaseWebComponent{
 		boolean flag = false; 
 		switchToFrame(findElementByCssPath(iframe_EbookDoc_css));
 		hardWait(1);
-		flag = findElementByXpath(getLocator(link_inlineActivityName_xpath, PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", (YamlReader.getData("propertyfilepath"))))).isDisplayed();
+		flag = findElementByXpath(getLocator(link_inlineActivityName_xpath,
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", 
+						(YamlReader.getData("propertyfilepath"))))).isDisplayed();
 		switchToDefaultContent();
 		return flag;
 	}
@@ -55,7 +57,9 @@ public class EbookDocumentPage extends BaseWebComponent{
 	public void clickInlineSA_Activity() {
 		switchToFrame(findElementByCssPath(iframe_EbookDoc_css));
 		logMessage("Click Start Button");
-		findElementByXpath(getLocator(btn_start_xpath, PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", (YamlReader.getData("propertyfilepath"))))).click();
+		findElementByXpath(getLocator(btn_start_xpath, 
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle", 
+						(YamlReader.getData("propertyfilepath"))))).click();
 		switchToDefaultContent();
 		
 	}

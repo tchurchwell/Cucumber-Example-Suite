@@ -64,12 +64,18 @@ private String instChapter;
 	}
 	
 	public boolean verifyEscContent(){
-		instChapter = PropFileHandler.readProperty("EscChapterName", YamlReader.getData("propertyfilepath"));
-		//int chapterNumber = Integer.parseInt(instChapter.replaceAll("[^0-9]", ""));
-		int chapterNumber = Integer.parseInt(instChapter.substring(8,9));
+		int chapterNumber = 0;
 		switchToFrame(findElementByCssPath(frame_Esc_css));
-		//int title = Integer.parseInt(findElementByXpath(lbl_ExamTitle_xpath).getText().replaceAll("[^0-9]", ""));
-		int title = Integer.parseInt(findElementByXpath(lbl_ExamTitle_xpath).getText().substring(2,3));
+		String chapter = findElementByXpath(lbl_EscChapter_xpath).getText();
+		String[] instChapterNumber = chapter.split(":");
+		if(LoginPage.product.equals("Anderson"))		
+		chapterNumber = Integer.parseInt(instChapterNumber[0].substring(8));
+		else
+			if(LoginPage.product.equals("Gulati"))
+				chapterNumber = Integer.parseInt(instChapterNumber[0]);
+		String[] arr = findElementByXpath(lbl_ExamTitle_xpath).getText().split(" ");
+		String arr2 = arr[0].substring(2);
+		int title = Integer.parseInt(arr2);
 		switchToDefaultContent();
 		if (chapterNumber==title)
 			return true;

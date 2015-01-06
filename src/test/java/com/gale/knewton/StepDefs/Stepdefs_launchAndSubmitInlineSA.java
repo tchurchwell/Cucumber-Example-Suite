@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.EbookDocumentPage;
+import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SimpleAssessmentActivityPage;
 
@@ -16,8 +17,7 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	private SimpleAssessmentActivityPage simpleAssessmentActivityPage;
 	private EbookDocumentPage ebookDocumentPage;
 	private MindTapLPNPage mindtaplpn;
-	
-	
+		
 	private boolean flag;
 	
 		
@@ -58,10 +58,13 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	
 	@Then("^Feedback section and Try Another button is displayed$")
 	public void feedback_section_and_try_another_button_is_displayed(){
-		Assert.assertTrue("Feedback is not displayed",simpleAssessmentActivityPage.isFeedbackDisplayed());
+		Assert.assertTrue("Feedback is not displayed",simpleAssessmentActivityPage.isInlineFeedbackDisplayed());
 		logPassMessage("Feedback is displayed");
-		Assert.assertTrue("Try Another Version button is not displayed",simpleAssessmentActivityPage.isTryAnotherVersionbtnDisplayed());
+		if(LoginPage.product.equals("Anderson")){
+		Assert.assertTrue("Try Another Version button is not displayed",
+				simpleAssessmentActivityPage.isInlineTryAnotherVersionbtnDisplayed());
 		logPassMessage("Try Another Version button is displayed");
+		}
 	}
 	
 	@And("^I submit inline Simple Assessment activity$")

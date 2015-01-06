@@ -124,6 +124,7 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 				logPassMessage("LPN page is displayed after accepting Eula page");
 			}
 		}catch (Exception e) {
+			mindTapLPNPage.clickEnter(); //Delete it after Eula Bug fix
 			if (mindTapLPNPage.isLPNDisplayedAtStudent()) {
 				logPassMessage("LPN page is displayed directly while launching the course");
 			}

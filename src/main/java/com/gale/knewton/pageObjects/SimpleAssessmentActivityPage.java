@@ -10,7 +10,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String currentPoint_xpath = "//*[@class='current-points']";
 	private String scoreEntry_xpath = "(//*[@class='score-wrapper']/span[1])[1]";
 	private String tryAnotherVersion_xpath = "//input[@value='Try Another Version']";
-	private String checkmywork = "//input[contains(@value,'Check My Work')]";
+	private String btn_checkmywork_xpath= "//input[contains(@value,'Check My Work')]";
 	private String grove_frame_css ="iframe[title='MindApp Grove integration App']";
 	private String frame2_Submit_id ="easyXDM_activityService_cxp_Target_provider";
 	private String ereader_frame_css = "iframe[title='Reader App']";
@@ -18,7 +18,8 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String frame3inline_Submit_id ="easyXDM_activityService_cxp_Target_provider";
 	private boolean flag = false;
 	private String btn_startActivitySA_css= "#rhs-start";
-	private String answer_option_xpath = "(//*[@class='q4-choice']//input)[1]";
+	private String answer_optionAnd_xpath = "(//*[@class='q4-choice']//input)[1]";
+	private String answer_optionGul_xpath = "(//*[@class='ci-choices']//input)[1]";
 	private String lbl_submit_xpath = "//button[text()='Review & Submit']";
 	private String btn_submit_xpath = "//button[contains(.,'Grade Assignment Now')]";
 	
@@ -26,14 +27,20 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	public boolean isSimpleAssessmentLaunched() {
 		try
 			{
-				logMessage("Switch to Frame 1");
 				hardWait(1);
 				switchToFrame(findElementByCssPath(grove_frame_css));
 				hardWait(1);
-				logMessage("Switch to Frame 2");
 				switchToFrame(findElementById(frame2_Submit_id));
+				if(LoginPage.product.equals("Anderson")){
 				resetImplicitTimeout(20);
 				flag = findElementByXpath(practiceVideo_xpath).isDisplayed();
+				}
+				else
+					if(LoginPage.product.equals("Gulati"))
+					{
+						resetImplicitTimeout(20);
+						flag = findElementByXpath(btn_checkmywork_xpath).isDisplayed();
+					}
 				switchToDefaultContent();
 			}
 			catch(Exception e1){
@@ -51,14 +58,19 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	public boolean isInlineSimpleAssessmentLaunched() {
 		
 		try{
-		logMessage("Switch to Frame 1");
 		switchToFrame(findElementByCssPath(ereader_frame_css));
-		logMessage("Switch to Frame 2");
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
-		logMessage("Switch to Frame 3");
 		switchToFrame(findElementById(frame3inline_Submit_id));
-		resetImplicitTimeout(20);
-		flag = findElementByXpath(practiceVideo_xpath).isDisplayed();
+		if(LoginPage.product.equals("Anderson")){
+			resetImplicitTimeout(20);
+			flag = findElementByXpath(practiceVideo_xpath).isDisplayed();
+			}
+			else
+				if(LoginPage.product.equals("Gulati"))
+				{
+					resetImplicitTimeout(20);
+					flag = findElementByXpath(btn_checkmywork_xpath).isDisplayed();
+				}
 		switchToDefaultContent();
 		}
 			catch(Exception e){
@@ -70,9 +82,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 
 	public void clickOnStartActivityforSA() {
 		logMessage("Click on Start Activity");
-		logMessage("frame Start 1");
 		switchToFrame(findElementByCssPath(grove_frame_css));
-		logMessage("frame start 2");
 		switchToFrame(findElementById(frame2_Submit_id));
 		findElementByCssPath(btn_startActivitySA_css).click();
 		switchToDefaultContent();
@@ -82,7 +92,15 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		logMessage("Select answer option");
 		switchToFrame(findElementByCssPath(grove_frame_css));
 		switchToFrame(findElementById(frame2_Submit_id));
-		findElementByXpath(answer_option_xpath).click();
+		if(LoginPage.product.equals("Anderson")){
+			findElementByXpath(answer_optionAnd_xpath).click();
+			}
+			else
+				if(LoginPage.product.equals("Gulati"))
+				{
+					findElementByXpath(answer_optionGul_xpath).click();
+				}
+		
 		switchToDefaultContent();
 	}
 	
@@ -91,7 +109,14 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementByCssPath(ereader_frame_css));
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
-		findElementByXpath(answer_option_xpath).click();
+		if(LoginPage.product.equals("Anderson")){
+			findElementByXpath(answer_optionAnd_xpath).click();
+			}
+			else
+				if(LoginPage.product.equals("Gulati"))
+				{
+					findElementByXpath(answer_optionGul_xpath).click();
+				}
 		switchToDefaultContent();
 	}
 	
@@ -99,7 +124,8 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementByCssPath(grove_frame_css));
 		switchToFrame(findElementById(frame2_Submit_id));
 		logMessage("Click Check My Work Button");
-		findElementByXpath(checkmywork).click();
+		findElementByXpath(btn_checkmywork_xpath).click();
+		switchToDefaultContent();
 			}
 	
 	public void checkMyWorkInline(){
@@ -107,17 +133,41 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
 		logMessage("Click Check My Work Button");
-		findElementByXpath(checkmywork).click();
+		findElementByXpath(btn_checkmywork_xpath).click();
+		switchToDefaultContent();
 	}
 	
 	public boolean isFeedbackDisplayed(){
-		if(findElementByXpath(feedback_xpath).isDisplayed())
-			return true;
-		else 
-			return false;
+		boolean flag;
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		flag = findElementByXpath(feedback_xpath).isDisplayed();
+		switchToDefaultContent();
+		return flag;
+	}
+	
+	public boolean isInlineFeedbackDisplayed(){
+		boolean flag;
+		switchToFrame(findElementByCssPath(ereader_frame_css));
+		switchToFrame(findElementByClass(frame2inline_Submit_class));
+		switchToFrame(findElementById(frame3inline_Submit_id));
+		flag = findElementByXpath(feedback_xpath).isDisplayed();
+		switchToDefaultContent();
+		return flag;
 	}
 	
 	public boolean isTryAnotherVersionbtnDisplayed(){
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		boolean flag= findElementByXpath(tryAnotherVersion_xpath).isDisplayed();
+		switchToDefaultContent();
+		return flag;
+	}
+	
+	public boolean isInlineTryAnotherVersionbtnDisplayed(){
+		switchToFrame(findElementByCssPath(ereader_frame_css));
+		switchToFrame(findElementByClass(frame2inline_Submit_class));
+		switchToFrame(findElementById(frame3inline_Submit_id));
 		boolean flag= findElementByXpath(tryAnotherVersion_xpath).isDisplayed();
 		switchToDefaultContent();
 		return flag;
@@ -135,9 +185,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	
 	public void clickReviewSubmitGDA(){
 		logMessage("Click Review and Submit label");
-		logMessage("Switch to Frame 1");
 		switchToFrame(findElementByCssPath(grove_frame_css));
-		logMessage("Switch to Frame 2");
 		switchToFrame(findElementById(frame2_Submit_id));
 		findElementByXpath(lbl_submit_xpath).click();
 		switchToDefaultContent();
@@ -171,11 +219,8 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	
 	public void GradeAssignmentButton(){
 			logMessage("Click on Grade Assignment Button");
-			logMessage("Switch to Frame 1");
 			switchToFrame(findElementByCssPath(ereader_frame_css));
-			logMessage("Switch to Frame 2");
 			switchToFrame(findElementByClass(frame2inline_Submit_class));
-			logMessage("Switch to Frame 3");
 			switchToFrame(findElementById(frame3inline_Submit_id));
 			findElementByXpath(btn_submit_xpath).click();
 			switchToDefaultContent();

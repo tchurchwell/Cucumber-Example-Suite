@@ -202,7 +202,7 @@ public class BaseWebComponent {
 	
 		return waitForElementToAppear(driver.findElement(By.xpath(elementUid)));
 	}
-
+	
 	public WebElement findElementById(String elementUid) {
 		return waitForElementToAppear(driver.findElement(By.id(elementUid)));
 	}
@@ -381,14 +381,16 @@ public class BaseWebComponent {
 		DateFormat dformatter = new SimpleDateFormat("DD");
 		SimpleDateFormat dateParse = new SimpleDateFormat("DD");
 		Calendar cal = Calendar.getInstance();
-		String month = Integer.toString(cal.get(Calendar.MONTH)+2);
-		String date = Integer.toString(cal.get(Calendar.DATE)+1);
+		cal.add(Calendar.MONTH,1); //set calendar to next month
+		cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE)); //set last day of next month
+		String month = Integer.toString(cal.get(Calendar.MONTH)+1);
+		String date = Integer.toString(cal.get(Calendar.DATE));
 		try {
 			month = formatter.format(monthParse.parse(month));
 			date = dformatter.format(dateParse.parse(date));
 		} catch (ParseException e) {
 		}
-		String year = Integer.toString(cal.get(Calendar.YEAR)+1);
+		String year = Integer.toString(cal.get(Calendar.YEAR));
 		String calDate = month + "/" + date + "/" + year;
 		return calDate;
 	}

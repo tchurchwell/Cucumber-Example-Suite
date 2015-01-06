@@ -9,7 +9,7 @@ public class ExamStudyCenterConfigPage extends BaseWebComponent {
 	private String iframe_distinctActivity_id = "distinct_activity_create_frame";
 	private String label_examStudyCenter_xpath = "//h3[text()='Exam Study Center - Configuration']";
 	private String inp_examDueDate_id = "examDueDate";
-	private String chkbox_Chapter_xpath = "(//*[@name='chk'])[1]";
+	private String chkbox_Chapter_xpath = "(//*[@name='chk'])[1]"; //Specify index for chapter number
 	private String lbl_ESCchapterName_xpath = chkbox_Chapter_xpath+"/following-sibling::span";
 	private String btn_save_id = "save";
 	
