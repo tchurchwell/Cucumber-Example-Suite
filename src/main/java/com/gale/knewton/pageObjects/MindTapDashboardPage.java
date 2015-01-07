@@ -13,5 +13,11 @@ public class MindTapDashboardPage extends BaseWebComponent{
 	return findElementByXpath(lbl_dashboard_xpath).isDisplayed();	
 	}
 
-	
+	public void disableDashboard(){
+		findElementByCssPath(lnk_UserMenu_css).click();
+		findElementByCssPath(lnk_CourseSetting_css).click();
+		findElementByCssPath(chk_ToggleDashboard_css).click();
+		findElementById(btn_Save_id).click();
+		findElementById(btn_Save_id).click();
+	}
 }

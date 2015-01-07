@@ -135,8 +135,11 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	    	logMessage("Eula did not appeared");
 	      	}	
 		mindTapLPNPage.clickEnter();
-		Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
+		Assert.assertTrue("Dashboard not displayed", mindTapDashboard.isMindtapDashboardDisplayed());
+    	logMessage("Dashboard displayed successfully");
+    	mindTapDashboard.disableDashboard();
+    	Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
 		logPassMessage("Instructor LPN page displayed");
-		
+
 	}
 }
