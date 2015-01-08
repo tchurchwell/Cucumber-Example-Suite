@@ -53,7 +53,7 @@ public class Stepdefs_groveInlineActivity extends BaseWebComponent {
 	
 	@Then("^verify creation type display as \"(.*?)\"$")
 	public void verify_creation_type_display_as_and(String actType) {
-		Assert.assertTrue("Creation type '"+actType+"' is not displayed", addActivityPage.verifyCreationTypeForGroveActivity().equals(actType));
+		Assert.assertTrue("Creation type '"+actType+"' is not displayed", addActivityPage.verifySACreationTypeForGroveActivity().equals(actType));
 		logPassMessage(actType + " is displaying as creation type for Grove Inline Activity");		
 	}
 	

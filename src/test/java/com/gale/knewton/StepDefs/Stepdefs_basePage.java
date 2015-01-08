@@ -88,7 +88,8 @@ public class Stepdefs_basePage extends BaseWebComponent {
 		mindTapLPNPage.getInstLPNDisplayed();
 		hardWait(1);
 		mindTapLPNPage.clickDistinctSimpleAssessment_Activity();
-		Assert.assertTrue("Simple Assessment activity page still not displayed", simpleAssessmentActivityPage.isSimpleAssessmentLaunched());
+		Assert.assertTrue("Simple Assessment activity page still not displayed",
+				simpleAssessmentActivityPage.isSimpleAssessmentLaunched());
 		logPassMessage("Simple Assessment activity page displayed successfully");
 		}
 	}

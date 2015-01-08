@@ -117,10 +117,26 @@ public void collapseLPNFolders(){
 		
 	}
 	
+	public boolean verifySavedSAAOnLPN() {
+		activityDynamicXpath = getLocator(link_activityName_xpath,PropFileHandler.readProperty("saaActivityTitle",
+				(YamlReader.getData("propertyfilepath"))));
+		hardWait(2);	
+		return findElementByXpath(activityDynamicXpath).isDisplayed();
+		
+	}
+	
 	public void clickDistinctSimpleAssessment_Activity() {
 		activityDynamicXpath = getLocator(link_activityName_xpath,
 				PropFileHandler.readProperty(
 						"SimpleAssessmentActivityTitle",
+						(YamlReader.getData("propertyfilepath"))));
+		findElementByXpath(activityDynamicXpath).click();
+	}
+	
+	public void clickDistinctSAA_Activity(){
+		activityDynamicXpath = getLocator(link_activityName_xpath,
+				PropFileHandler.readProperty(
+						"saaActivityTitle",
 						(YamlReader.getData("propertyfilepath"))));
 		findElementByXpath(activityDynamicXpath).click();
 	}

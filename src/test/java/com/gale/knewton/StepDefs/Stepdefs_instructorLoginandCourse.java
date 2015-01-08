@@ -140,6 +140,6 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
     	mindTapDashboard.disableDashboard();
     	Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
 		logPassMessage("Instructor LPN page displayed");
-
+		
 	}
 }

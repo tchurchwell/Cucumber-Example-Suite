@@ -21,14 +21,14 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 	
 	//********************Launch GDA Simple Assessment**************
 	@When("^I click the already linked Simple Assessment activity$")
-	public void i_click_the_already_linked_Simple_Assessment_activity() throws Throwable {
+	public void i_click_the_already_linked_Simple_Assessment_activity() {
 		mindTapLPNPage = new MindTapLPNPage();
 		hardWait(1);
 	    mindTapLPNPage.clickDistinctSimpleAssessment_Activity();
 	}
 
 	@Then("^I am on Simple Assessment activity page$")
-	public void i_am_on_Simple_Assessment_activity_overview_page() throws Throwable {
+	public void i_am_on_Simple_Assessment_activity_overview_page() {
 		simpleAssessmentActivityPage = new SimpleAssessmentActivityPage();
 		flag = simpleAssessmentActivityPage.isSimpleAssessmentLaunched();
 		if(!flag){
@@ -42,14 +42,14 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 	// ********************Submit Simple Assessment Activity******************
 
 	@When("^I launch Activity and answer one Question$")
-	public void i_click_Start_Activity_and_answer_one_Question() throws Throwable {
+	public void i_click_Start_Activity_and_answer_one_Question() {
 		simpleAssessmentActivityPage = new SimpleAssessmentActivityPage();
 		simpleAssessmentActivityPage.selectOption();
 	    logPassMessage("Activity Launched and answered one question");
 	}
 	
 	@And ("^I click on Check My Work button$")
-	public void i_click_on_Check_My_Work_button() throws Throwable{
+	public void i_click_on_Check_My_Work_button() {
 		simpleAssessmentActivityPage = new SimpleAssessmentActivityPage();
 		simpleAssessmentActivityPage.checkMyWork();
 		Assert.assertTrue("Feedback not displayed", simpleAssessmentActivityPage.isFeedbackDisplayed());
@@ -61,7 +61,7 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 	}
 	
 	@And("^I submit Simple Assessment activity$")
-	public void i_submit_Simple_Assessment_activity() throws Throwable {
+	public void i_submit_Simple_Assessment_activity() {
 		simpleAssessmentActivityPage = new SimpleAssessmentActivityPage();
 		simpleAssessmentActivityPage.clickReviewSubmitGDA();
 		Assert.assertTrue("Current Score and Entry Score do not match",simpleAssessmentActivityPage.verifyGradesOnTable());

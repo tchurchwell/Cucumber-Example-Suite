@@ -14,7 +14,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_inst02@qai.com | A123456  |
+ 	| knewton_automation_inst01@qai.com | A123456  |
  		
  
  @CreateCourse @LogincreateLaunch @Smoke

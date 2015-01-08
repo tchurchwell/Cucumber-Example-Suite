@@ -7,6 +7,7 @@ public class AddActivityPanelPage extends BaseWebComponent {
 
 
 	private String btn_simpleAssessment_xpath = "//div[text()='Simple Assessment']";
+	private String btn_SAA_xpath = "//div[text()='SAA']";
 	private String link_gDA_xpath = "//h3[@class='activityName' and text()='Grove Distinct Activity']";
 	private String iframe_distinctActivity_id = "distinct_activity_create_frame";
 
@@ -15,6 +16,7 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	
 	private String btn_toggle_xpath = "//button[@class='toggle']";
 	private String btn_radioBtnPractice_xpath = "(//span[contains(text(),'Practice')])[1]/preceding-sibling::input";
+	private String btn_radioBtnSAA_xpath = "(//span[contains(text(),'Knewton Management Assessment')])[1]/preceding-sibling::input";
 	private String btn_radioBtnQuiz_xpath = "(//span[contains(text(),'Quiz')])[1]/preceding-sibling::input";
 	private String btn_publish_xpath = "//button[contains(text(),'Publish')]";
 	private String btn_cancelOnList_xpath = "(//*[contains(text(),'Cancel')])[1]";
@@ -34,16 +36,28 @@ public class AddActivityPanelPage extends BaseWebComponent {
 		findElementByXpath(Link_examStudyCenter_xpath).click();
 	}
 
-	public String verifyCreationTypeForGroveActivity() {
+	public String verifySACreationTypeForGroveActivity() {
 		switchToFrame(findElementById(iframe_distinctActivity_id));
 		String getSimpleAssessment = waitAndLocateElementByXpath(btn_simpleAssessment_xpath).getText();
 		switchToDefaultContent();
 		return getSimpleAssessment;
 	}
+	
+	public String verifySAACreationTypeForGDA(){
+		switchToFrame(findElementById(iframe_distinctActivity_id));
+		String getSAA = waitAndLocateElementByXpath(btn_SAA_xpath).getText();
+		switchToDefaultContent();
+		return getSAA;
+	}
 
 	public void selectSimpleAssessment() {
 		switchToFrame(findElementById(iframe_distinctActivity_id));
 		findElementByXpath(btn_simpleAssessment_xpath).click();
+	}
+	
+	public void selectSAA(){
+		switchToFrame(findElementById(iframe_distinctActivity_id));
+		findElementByXpath(btn_SAA_xpath).click();
 	}
 
 	public void expandAndSelectRadioForSimpleAssess() {
@@ -53,6 +67,11 @@ public class AddActivityPanelPage extends BaseWebComponent {
 		else
 			if(LoginPage.product.equals("Gulati"))
 				findElementByXpath(btn_radioBtnQuiz_xpath).click();				
+	}
+	
+	public void expandAndSelectRadioBtnForSAA(){
+		findElementByXpath( btn_toggle_xpath).click();
+		findElementByXpath(btn_radioBtnSAA_xpath).click();
 	}
 
 	public void clickPublish() {

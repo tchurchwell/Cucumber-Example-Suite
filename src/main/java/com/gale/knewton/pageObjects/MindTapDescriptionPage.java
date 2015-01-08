@@ -14,23 +14,28 @@ public class MindTapDescriptionPage extends BaseWebComponent {
 	private String option_order_xpath = "//*[@id='order-menu']/li[1]/a";
 	
 	private String timeStamp = String.valueOf(System.currentTimeMillis());
-	private String saaActivityTitle = "SaaActivity_" + timeStamp;
-	private String simpAssessActivityTitle = "SimpleAssessment_" + timeStamp;
+	private String saaActivityTitle;
+	private String simpAssessActivityTitle;
 	private String escTitle = "Exam Study Center_" + timeStamp;
 		
-	public void enterSaaActivityTitle() throws IOException {
+	public void enterSaaActivityTitle() {
+		saaActivityTitle = "SaaActivity_" + timeStamp;
+		hardWait(2);
 		findElementById(inp_title_id).clear();
 		findElementById(inp_title_id).sendKeys(saaActivityTitle);
 		logPassMessage("Title entered as: " + saaActivityTitle);
-		PropFileHandler.writeToFile("saaActivityTitle", saaActivityTitle, YamlReader.getYamlValue("propertyfilepath"));
+		PropFileHandler.writeToFile("saaActivityTitle", saaActivityTitle, 
+				YamlReader.getYamlValue("propertyfilepath"));
 	}
 
 	public void enterSimpAssessTitle() throws IOException {
-		hardWait(3);
+		simpAssessActivityTitle = "SimpleAssessment_" + timeStamp;
+		hardWait(2);
 		findElementById(inp_title_id).clear();
 		findElementById(inp_title_id).sendKeys(simpAssessActivityTitle);
 		logPassMessage("Title entered as: " + simpAssessActivityTitle);
-		PropFileHandler.writeToFile("SimpleAssessmentActivityTitle", simpAssessActivityTitle, YamlReader.getYamlValue("propertyfilepath"));
+		PropFileHandler.writeToFile("SimpleAssessmentActivityTitle", simpAssessActivityTitle, 
+				YamlReader.getYamlValue("propertyfilepath"));
 	}
 	
 	public void enterinlineSimpAssessTitle() throws IOException {
