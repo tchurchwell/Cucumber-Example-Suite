@@ -14,7 +14,7 @@ import com.gale.knewton.util.YamlReader;
 
 public class MindTapLPNPage extends BaseWebComponent {
 
-	private String div_LPN_link = "Course";
+	private String div_LPN_xpath = "//a[text()='Course']";
 	private String div_LPNstud_xpath = "//*[text()='Detail']";
 	private String btn_add_css = "a.navLink.menu_trigger";
 	private String btn_addActivity_css = "li.menu_item.activity > a";
@@ -27,7 +27,7 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String div_thumbar_xpath = "//div[contains(@title,'Reading')][1]";
 	private String img_ChapterFolderGul_xpath = "(//img[@title='Folder'])[1]";
 	private String img_expandedFolders_xpath = "//img[@title='Folder' and parent::div[contains(@class,'lpn_group_expanded')]]";
-	
+	private String icon_announcementNotice_xpath = "//div[contains(@class,'announcement')]/div/a[contains(@class,'nb_closeIcon')]";
 
 	private String link_activityName_xpath = "//a[contains(.,'${activitytitle}')]";
 	private String activityDynamicXpath;
@@ -44,7 +44,7 @@ public void collapseLPNFolders(){
 }
 
 	public boolean getInstLPNDisplayed() {
-		hardWait(5);
+		//hardWait(5);
 		boolean flag;
 		flag = isLPNDisplayedAtInstructor();
 			if(flag){
@@ -61,8 +61,8 @@ public void collapseLPNFolders(){
 	}
 	
 	public boolean isLPNDisplayedAtInstructor() {
-		hardWait(1);
-		return	findElementByLinkText(div_LPN_link).isDisplayed();
+		//hardWait(3);
+		return	waitAndLocateElementByXpath(div_LPN_xpath).isDisplayed();
 	}
 	
 	public void openMindTapLPN() {
@@ -88,6 +88,19 @@ public void collapseLPNFolders(){
 		findElementByCssPath(btn_add_css).click();
 		findElementByCssPath(btn_addActivity_css).click();
 	}
+	
+	public void closeAnnouncement(){
+	     try {
+            resetImplicitTimeout(3);
+            if(findElementByXpath(icon_announcementNotice_xpath).isDisplayed()){
+                findElementByXpath(icon_announcementNotice_xpath).click();
+                hardWait(2);
+            }
+            
+        }catch(Exception e){ }
+   
+    }
+	
 
 	public void navigateToEBookDocument() {
 		if(LoginPage.product.equals("Anderson")){

@@ -21,7 +21,7 @@ public class Stepdefs_groveDistinctActivity extends BaseWebComponent {
 
 	@Then("^I select Grove Distinct Activity from the list$")
 	public void I_select_Grove_Distinct_Activity_from_the_list() {
-		addActivityPage.selectGroveDistinctActivity();
+		addActivityPage.selectAssessment();
 	}
 	
 	@Then("^Creation type display as \"(.*?)\"$")
@@ -62,6 +62,7 @@ public class Stepdefs_groveDistinctActivity extends BaseWebComponent {
 	
 	@Then("^verify created SAA activity should linked to LPN$")
 	public void verify_created_SAA_activity_should_linked_to_LPN(){
+		mindTapLPNPage.closeAnnouncement();
 		Assert.assertTrue("SAA is not Published to LPN", mindTapLPNPage.verifySavedSAAOnLPN());
 		logPassMessage("Published SAA is correctly displayed on LPN");
 	}
@@ -89,6 +90,7 @@ public class Stepdefs_groveDistinctActivity extends BaseWebComponent {
 
 	@Then("^verify created Simple Assessment activity should linked to LPN$")
 	public void verify_created_Simple_Assessment_activity_should_linked_to_LPN() {
+		mindTapLPNPage.closeAnnouncement();
 		Assert.assertTrue("Simple Assessment is not Published to LPN", mindTapLPNPage.verifySavedSimpleAssessmentOnLPN());
 		logPassMessage("Published Simple Assessment is correctly displayed on LPN");
 	}

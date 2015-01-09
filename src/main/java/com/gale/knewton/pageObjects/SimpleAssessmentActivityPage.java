@@ -11,7 +11,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String scoreEntry_xpath = "(//*[@class='score-wrapper']/span[1])[1]";
 	private String tryAnotherVersion_xpath = "//input[@value='Try Another Version']";
 	private String btn_checkmywork_xpath= "//input[contains(@value,'Check My Work')]";
-	private String grove_frame_css ="iframe[title='MindApp Grove integration App']";
+	private String grove_frame_css ="iframe[title='Assessments App']";
 	private String frame2_Submit_id ="easyXDM_activityService_cxp_Target_provider";
 	private String ereader_frame_css = "iframe[title='Reader App']";
 	private String frame2inline_Submit_class = "appFrame";

@@ -8,10 +8,10 @@ public class AddActivityPanelPage extends BaseWebComponent {
 
 	private String btn_simpleAssessment_xpath = "//div[text()='Simple Assessment']";
 	private String btn_SAA_xpath = "//div[text()='SAA']";
-	private String link_gDA_xpath = "//h3[@class='activityName' and text()='Grove Distinct Activity']";
+	private String link_gDA_xpath = "//h3[@class='activityName' and text()='Assessment']";
 	private String iframe_distinctActivity_id = "distinct_activity_create_frame";
 
-	private String link_groveInlineActivity_xpath = "//h3[@class='activityName' and text()='Grove Inline Activity']";
+	private String link_groveInlineActivity_xpath = "//h3[@class='activityName' and text()='Inline Assessment']";
 	private String Link_examStudyCenter_xpath = "//h3[@class='activityName' and text()='Exam Study Center']";
 	
 	private String btn_toggle_xpath = "//button[@class='toggle']";
@@ -22,12 +22,12 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	private String btn_cancelOnList_xpath = "(//*[contains(text(),'Cancel')])[1]";
 	private String btn_cancelOnActivity_xpath = "(//*[contains(text(),'Cancel')])[2]";
 
-	public void selectGroveDistinctActivity() {
+	public void selectAssessment() {
 		resetImplicitTimeout(10);
 		findElementByXpath(link_gDA_xpath).click();
 	}
 
-	public void selectGroveInlineActivity() {
+	public void selectInlineAssessment() {
 		findElementByXpath(link_groveInlineActivity_xpath).click();
 	}
 	

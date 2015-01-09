@@ -45,10 +45,10 @@ public class Stepdefs_groveInlineActivity extends BaseWebComponent {
 		eBookDocPage.openActivityPanelByEditMode();
 	}
 	
-	@Then("^select Grove Inline Activity from the Activity list$")
-	public void select_Grove_Distinct_Activity_from_the_list() {
+	@Then("^select Inline Assessment from the Activity list$")
+	public void select_inline_assessment_from_the_list() {
 		addActivityPage = new AddActivityPanelPage();
-		addActivityPage.selectGroveInlineActivity();
+		addActivityPage.selectInlineAssessment();
 	}
 	
 	@Then("^verify creation type display as \"(.*?)\"$")

@@ -453,4 +453,16 @@ public class BaseWebComponent {
         catch(Exception e){}
         resetImplicitTimeout(AJAX_TIMEOUT);       
     }
+   
+ /*
+  * Scroll Function for chrome and IE
+  */
+   
+   public void scrollDown(WebElement el) {
+	   try {
+	    js.executeScript("arguments[0].scrollIntoView(true);", el);
+	   }catch (Exception e){
+		   
+	   }
+   }
 }

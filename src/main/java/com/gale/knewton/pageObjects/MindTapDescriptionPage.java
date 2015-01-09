@@ -39,11 +39,13 @@ public class MindTapDescriptionPage extends BaseWebComponent {
 	}
 	
 	public void enterinlineSimpAssessTitle() throws IOException {
+		simpAssessActivityTitle = "SimpleAssessment_" + timeStamp;
 		hardWait(3);
 		findElementById(inp_title_id).clear();
 		findElementById(inp_title_id).sendKeys(simpAssessActivityTitle);
 		logPassMessage("Title entered as: " + simpAssessActivityTitle);
-		PropFileHandler.writeToFile("InlineSimpleAssessmentActivityTitle", simpAssessActivityTitle, YamlReader.getYamlValue("propertyfilepath"));
+		PropFileHandler.writeToFile("InlineSimpleAssessmentActivityTitle", 
+				simpAssessActivityTitle, YamlReader.getYamlValue("propertyfilepath"));
 		
 	}
 

@@ -22,7 +22,7 @@ public class Stepdefs_basePage extends BaseWebComponent {
 	private ESCActivityPage escPage;
 	
 	private String lbl_addActivityHeading_xpath = "//h1[text()='Add Activity']";
-	private String lbl_GDAHeading_xpath = "//span[contains(text(),' Select Grove Distinct Activity')]";
+	private String lbl_GDAHeading_xpath = "//span[contains(text(),' Select Assessment')]";
 
 	
 	@Given("^I am on Add Activity List$")
@@ -30,7 +30,8 @@ public class Stepdefs_basePage extends BaseWebComponent {
 		mindTapLPNPage = new MindTapLPNPage();
 		Assert.assertTrue("MindTap LPN did not appear",mindTapLPNPage.getInstLPNDisplayed());
 		mindTapLPNPage.clickAddActivitybutton();
-		Assert.assertEquals("Add Activity list do not appear",findElementByXpath(lbl_addActivityHeading_xpath).getText(), "Add Activity");
+		Assert.assertEquals("Add Activity list do not appear",
+				findElementByXpath(lbl_addActivityHeading_xpath).getText(), "Add Activity");
 		logPassMessage("I am on Add Activity List");
 	}
 	
@@ -43,17 +44,19 @@ public class Stepdefs_basePage extends BaseWebComponent {
 		Assert.assertTrue("Exam Study Center Configuration page not displayed", (EscCenterHead).equals("Exam Study Center - Configuration"));
 	}
 	
-	@Given("^I am on Select Grove Distinct Activity page$")
-	public void i_am_on_Select_Grove_Distinct_Activity_page() {
+	@Given("^I am on Select Assessment page$")
+	public void i_am_on_Select_Assessment_page() {
 		mindTapLPNPage = new MindTapLPNPage();
 		Assert.assertTrue("MindTap LPN did not appear",mindTapLPNPage.getInstLPNDisplayed());
 		logPassMessage("Mindtap LPN appeared");
 		mindTapLPNPage.clickAddActivitybutton();
-		Assert.assertEquals("Add Activity page do not appear","Add Activity",findElementByXpath(lbl_addActivityHeading_xpath).getText());
+		Assert.assertEquals("Add Activity page do not appear","Add Activity",
+				findElementByXpath(lbl_addActivityHeading_xpath).getText());
 		logPassMessage("I am on Add Activity page");
 		addActivityPage = new AddActivityPanelPage(); 
-		addActivityPage.selectGroveDistinctActivity();
-		Assert.assertEquals("Select Grove Distinct Activity page do not appear","Select Grove Distinct Activity",findElementByXpath(lbl_GDAHeading_xpath).getText());
+		addActivityPage.selectAssessment();
+		Assert.assertEquals("Select Grove Distinct Activity page do not appear","Select Assessment",
+				findElementByXpath(lbl_GDAHeading_xpath).getText());
 	}
 	
 	@Given("^I should be on instructor's LPN page$")

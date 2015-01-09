@@ -48,6 +48,7 @@ public class Stepdefs_examStudyCenter extends BaseWebComponent {
 	@Then("^created ESC should be linked to LPN$")
 	public void created_ESC_should_be_linked_to_LPN() {
 		mindTapLPNPage = new MindTapLPNPage();
+		mindTapLPNPage.closeAnnouncement();
 		Assert.assertTrue("Published Exam Study Center is not displayed on LPN ",mindTapLPNPage.verifySavedESCActivityOnLPN());
 		logPassMessage("ESC Activity is verified on LPN as distinct activity");
 	}
