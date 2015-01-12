@@ -35,4 +35,31 @@ private boolean flag;
 		logPassMessage("SAA activity overview page displayed successfully");
 	}
 
+	
+//	****************** SUBMIT DISTINCT SAA*************************
+	@Given("^I should be on SAA activity page$")
+	public void i_should_be_on_SAA_activity_page() {
+		SaaActivity = new SAA_ActivityPage();
+		
+		if(SaaActivity.isSAA_OverviewTabDisplayed()){
+	 	  logPassMessage("SAA activity overview page displayed successfully");
+	}else{
+		logWarningMessage("SAA activity overview page not displayed");
+		mindtapLPN = new MindTapLPNPage();
+		mindtapLPN.getInstLPNDisplayed();
+		hardWait(1);
+		mindtapLPN.clickDistinctSAA_Activity();
+		Assert.assertTrue("SAA activity ovewview page still not displayed",
+				SaaActivity.isSAA_OverviewTabDisplayed());
+		logPassMessage("SAA activity page overview displayed successfully");
+		}
+	}
+
+	@When("^I click on 'Start Activity' button on overview page$")
+	public void i_click_on_Start_Activity_button_on_overview_page(){
+	 SaaActivity.clickStartActivity();
+	}
+
+	
+
 }

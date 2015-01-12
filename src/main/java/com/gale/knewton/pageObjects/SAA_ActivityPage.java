@@ -37,6 +37,18 @@ public class SAA_ActivityPage extends BaseWebComponent {
 	}
 	
 	
+	public void clickStartActivity(){
+		logMessage("Click on Start Activity");
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		hardWait(3);
+		findElementById(btn_startActivity_id).click();
+		switchToDefaultContent();
+	}
+	
+
+	
+	
 	public void relaunchSaaActivity(){
 		refresh();
 		switchToDefaultContent();
