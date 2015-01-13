@@ -46,6 +46,67 @@ public class SAA_ActivityPage extends BaseWebComponent {
 		switchToDefaultContent();
 	}
 	
+	public void selectRadioBtn(){
+		logMessage("Select radio button for Question one");
+		hardWait(1);
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		findElementByXpath(radio_answer_xpath).click();
+		switchToDefaultContent();
+	}
+	
+	
+	public void submitSaaQuestion(){
+		logMessage("Submit SAA question");
+		hardWait(1);
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		hardWait(1);
+		findElementByXpath(btn_SubmitAnswer_xpath).click();
+		switchToDefaultContent();
+	}
+	
+	public boolean verifySAAfeedback(){
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		String cross_icon = findElementByXpath(icon_Cross_xpath).getAttribute("rejoinder");
+		cross_icon = cross_icon.substring(0,cross_icon.length()-1);
+		String feedback = findElementByCssPath(lbl_Feedback_css).getText();
+		if(feedback.equals(cross_icon)){
+			logPassMessage("feedback displayed as: "+feedback);
+			switchToDefaultContent();
+			return true;
+		}
+		else{
+			switchToDefaultContent();
+			return false;
+		}
+	}
+	
+	public void clickSubmitLabelSaa(){
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		switchToFrame(findElementById(frame2_Submit_id));
+		scrollDown(findElementByXpath(lbl_Submit_xpath));
+		findElementByXpath(lbl_Submit_xpath).click();		
+	}
+	
+	public boolean verifySaaGrades(){
+		String currentScore = findElementByCssPath(lbl_scoreIndicator_css).getText();
+		String[] current = currentScore.substring(15).split(" ");
+		currentScore = current[0];
+		logMessage("Current Score is: "+currentScore);
+		String score = findElementById(lbl_CurrentPoints_id).getText();
+		score = score+"/"+findElementById(lbl_PossiblePoints_id).getText();
+		if(currentScore.equals(score))
+			return true;
+		else
+			return false;		
+	}
+	
+	public void submitSAA(){
+		findElementById(btn_Submit_id).click();
+		switchToDefaultContent();
+	}
 
 	
 	

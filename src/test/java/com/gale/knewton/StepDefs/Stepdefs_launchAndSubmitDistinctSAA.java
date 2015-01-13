@@ -60,6 +60,22 @@ private boolean flag;
 	 SaaActivity.clickStartActivity();
 	}
 
+@When("^I answer first question$")
+	public void i_answer_first_question() {
+		SaaActivity.selectRadioBtn();
+		SaaActivity.submitSaaQuestion();
+		Assert.assertTrue("Incorrect feedback displayed",SaaActivity.verifySAAfeedback());
+		logPassMessage("Correct Feedback is displayed for SAA activity");
+	}
+
+	@When("^I submit SAA distinct activity$")
+	public void i_submit_SAA_activity() {
+	SaaActivity.clickSubmitLabelSaa();
+	Assert.assertTrue("Current score do not matches with the score obtained", SaaActivity.verifySaaGrades());
+	logPassMessage("Current score matches with the score obtained");
+	SaaActivity.submitSAA();
+	}
+
 	
 
 }
