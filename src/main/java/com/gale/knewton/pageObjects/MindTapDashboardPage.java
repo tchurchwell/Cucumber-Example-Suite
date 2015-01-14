@@ -19,5 +19,6 @@ public class MindTapDashboardPage extends BaseWebComponent{
 		findElementByCssPath(chk_ToggleDashboard_css).click();
 		findElementById(btn_Save_id).click();
 		findElementById(btn_Save_id).click();
+		logPassMessage("Dashboard disabled successfully");
 	}
 }

@@ -8,7 +8,7 @@ public class SAA_ActivityPage extends BaseWebComponent {
 	private String frame2_Submit_id ="easyXDM_activityService_cxp_Target_provider";
 	private String lbl_overview_xpath = "//div[text()='Overview']";
 	private boolean flag = false;
-	private String btn_startActivity_id = "rhs-actuallystart";
+	private String btn_startActivity_xpath = "//*[@id='rhs-actuallystart']";
 	private String radio_answer_xpath = "//input[@class='ci-input' and @value='2']";
 	private String icon_Cross_xpath = radio_answer_xpath+"/ancestor::div[1]/span[2]/span";
 	private String lbl_Feedback_css = ".ci-feedback-title";
@@ -41,8 +41,7 @@ public class SAA_ActivityPage extends BaseWebComponent {
 		logMessage("Click on Start Activity");
 		switchToFrame(findElementByCssPath(grove_frame_css));
 		switchToFrame(findElementById(frame2_Submit_id));
-		hardWait(3);
-		findElementById(btn_startActivity_id).click();
+		waitAndLocateElementByXpath(btn_startActivity_xpath).click();
 		switchToDefaultContent();
 	}
 	
@@ -107,8 +106,6 @@ public class SAA_ActivityPage extends BaseWebComponent {
 		findElementById(btn_Submit_id).click();
 		switchToDefaultContent();
 	}
-
-	
 	
 	public void relaunchSaaActivity(){
 		refresh();

@@ -6,9 +6,6 @@ import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.ConfirmCourseInfoPage;
 import com.gale.knewton.pageObjects.CoursePaymentPage;
 import com.gale.knewton.pageObjects.LoginPage;
-import com.gale.knewton.pageObjects.MindTapEulaPage;
-import com.gale.knewton.pageObjects.MindTapLPNPage;
-//import com.gale.knewton.pageObjects.SSOInstructorDashboardPage;
 import com.gale.knewton.pageObjects.SSOStudentDashBoardPage;
 
 import cucumber.api.java.en.Given;
@@ -20,9 +17,7 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 	private LoginPage loginPage;
 	private ConfirmCourseInfoPage confirmCourseInfoPage;
 	private CoursePaymentPage coursePaymentPage;
-	private MindTapEulaPage mindTapEulaPage;
-	private MindTapLPNPage mindTapLPNPage;
-	
+
 	
 	// ************************* Student Login *******************************
 
@@ -109,10 +104,10 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 		coursePaymentPage.clickTakeMeToMyCourse();
 	}
 
-	@Then("^I accept Eula if appears and redirected to MindTap LPN page$")
+	/*@Then("^I accept Eula if appears and redirected to MindTap LPN page$")
 	public void i_should_be_redirected_to_MindTap_LPN_page() throws Throwable {
 		mindTapLPNPage = new MindTapLPNPage();
-		mindTapEulaPage = new MindTapEulaPage();
+		mindTapEulaPage = new EulaPage();
 		resetImplicitTimeout(10);
 		try {
 			if (mindTapEulaPage.isEulaDisplayed()) {
@@ -124,7 +119,7 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 				logPassMessage("LPN page is displayed after accepting Eula page");
 			}
 		}catch (Exception e) {
-			mindTapLPNPage.clickEnter(); //Delete it after Eula Bug fix
+			mindTapLPNPage.clickEnter();
 			if (mindTapLPNPage.isLPNDisplayedAtStudent()) {
 				logPassMessage("LPN page is displayed directly while launching the course");
 			}
@@ -132,5 +127,5 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 				logWarningMessage("Exception " + e);
 			}
 		}
-	}
+	}*/
 }

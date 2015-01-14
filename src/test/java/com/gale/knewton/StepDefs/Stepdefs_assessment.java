@@ -13,7 +13,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class Stepdefs_groveDistinctActivity extends BaseWebComponent {
+public class Stepdefs_assessment extends BaseWebComponent {
 	
 	private AddActivityPanelPage addActivityPage = new AddActivityPanelPage();
 	private MindTapDescriptionPage mindTapDescriptionPage = new MindTapDescriptionPage();

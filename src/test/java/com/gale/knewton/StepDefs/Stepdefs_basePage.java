@@ -68,8 +68,8 @@ public class Stepdefs_basePage extends BaseWebComponent {
 	@Given("^I am on instructor's LPN page$")
 	public void i_am_on_instructor_LPN_page() {
 		mindTapLPNPage = new MindTapLPNPage();
-		Assert.assertTrue("LPN Page not displayed", mindTapLPNPage.isLPNDisplayedAtInstructor());
-		logPassMessage("LPN page is displayed successfully");
+		Assert.assertTrue("Instructor LPN Page not displayed", mindTapLPNPage.isLPNDisplayedAtInstructor());
+		logPassMessage("Instructor LPN page is displayed successfully");
 	}
 	
 	@Given("^I should be on Student's LPN page$")

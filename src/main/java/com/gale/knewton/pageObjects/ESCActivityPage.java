@@ -21,9 +21,8 @@ private String instChapter;
 	public boolean isESCErrorDisplayed(String error){
 		hardWait(1);
 		switchToFrame(findElementByCssPath(frame_Esc_css));
-		hardWait(1);
+		hardWait(2);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EscError_xpath)));
-		hardWait(1);
 		String errorinst = findElementByXpath(EscError_xpath).getText();
 		switchToDefaultContent();
 		return (error.equals(errorinst));

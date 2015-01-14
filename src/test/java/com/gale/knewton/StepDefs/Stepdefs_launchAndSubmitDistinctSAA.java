@@ -43,16 +43,16 @@ private boolean flag;
 		
 		if(SaaActivity.isSAA_OverviewTabDisplayed()){
 	 	  logPassMessage("SAA activity overview page displayed successfully");
-	}else{
-		logWarningMessage("SAA activity overview page not displayed");
-		mindtapLPN = new MindTapLPNPage();
-		mindtapLPN.getInstLPNDisplayed();
-		hardWait(1);
-		mindtapLPN.clickDistinctSAA_Activity();
-		Assert.assertTrue("SAA activity ovewview page still not displayed",
-				SaaActivity.isSAA_OverviewTabDisplayed());
-		logPassMessage("SAA activity page overview displayed successfully");
-		}
+		}else{
+			logWarningMessage("SAA activity overview page not displayed");
+			mindtapLPN = new MindTapLPNPage();
+			mindtapLPN.getInstLPNDisplayed();
+			hardWait(1);
+			mindtapLPN.clickDistinctSAA_Activity();
+			Assert.assertTrue("SAA activity ovewview page still not displayed",
+					SaaActivity.isSAA_OverviewTabDisplayed());
+			logPassMessage("SAA activity page overview displayed successfully");
+			}
 	}
 
 	@When("^I click on 'Start Activity' button on overview page$")
@@ -60,7 +60,7 @@ private boolean flag;
 	 SaaActivity.clickStartActivity();
 	}
 
-@When("^I answer first question$")
+	@When("^I answer first question$")
 	public void i_answer_first_question() {
 		SaaActivity.selectRadioBtn();
 		SaaActivity.submitSaaQuestion();
@@ -75,7 +75,5 @@ private boolean flag;
 	logPassMessage("Current score matches with the score obtained");
 	SaaActivity.submitSAA();
 	}
-
-	
 
 }

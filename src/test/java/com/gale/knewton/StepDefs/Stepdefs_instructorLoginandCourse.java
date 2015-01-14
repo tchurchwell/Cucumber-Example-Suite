@@ -6,9 +6,11 @@ import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.CreateCoursePage;
 import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapDashboardPage;
-import com.gale.knewton.pageObjects.MindTapEulaPage;
+import com.gale.knewton.pageObjects.EulaPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SSOInstructorDashboardPage;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -19,6 +21,7 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	//##############################---Instructor Login/Logout---####################################
 	private SSOInstructorDashboardPage ssoDashBoardPage;
 	private LoginPage loginPage;
+	boolean flag = false;
 	
 	
 	@Given("^I am on the Cengage Learning Login Page to login as instructor$")
@@ -103,7 +106,7 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	
 	//#########################   Accept Eula   ######################
 	private MindTapLPNPage mindTapLPNPage;
-	private MindTapEulaPage mindTapEulaPage;
+	private EulaPage eulaPage;
 	private MindTapDashboardPage mindTapDashboard;
 
 	@Given("^I click newly created course$")
@@ -114,32 +117,53 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 
 	@Then("^I am on the MindTap window$")
 	public void i_am_on_the_MindTap_window(){
-		mindTapEulaPage = new MindTapEulaPage();
-		Assert.assertTrue("MindTap window not displayed", mindTapEulaPage.isOnMindTapWindow());
+		eulaPage = new EulaPage();
+		Assert.assertTrue("MindTap window not displayed", eulaPage.isOnMindTapWindow());
 		logPassMessage("MindTap window is displayed");
 	}
 
 	@When("^verify presence of Eula and accept EULA if present$")
 	public void verify_presence_of_Eula_and_accept_EULA_if_present() {
+		String currentLogin = PropFileHandler.readProperty("CurrentLogin",YamlReader.getYamlValue("propertyfilepath"));
 		mindTapLPNPage = new MindTapLPNPage();
 		mindTapDashboard = new MindTapDashboardPage();
-	   	resetImplicitTimeout(10);
-		try{
-			   	if(mindTapEulaPage.isEulaDisplayed()){
-	    		mindTapEulaPage.clickAcceptButton();
-	    		logPassMessage("Eula page appeared and Accepted");
-	     	}	    	
-			}
-		catch (Exception e){
-			System.out.println("*************EXCEPTION  "+e);
-	    	logMessage("Eula did not appeared");
-	      	}	
-		mindTapLPNPage.clickEnter();
-		Assert.assertTrue("Dashboard not displayed", mindTapDashboard.isMindtapDashboardDisplayed());
-    	logMessage("Dashboard displayed successfully");
-    	mindTapDashboard.disableDashboard();
-    	Assert.assertTrue("Instructor MindTap LPN did not appear", mindTapLPNPage.getInstLPNDisplayed());
-		logPassMessage("Instructor LPN page displayed");
+		eulaPage = new EulaPage();
 		
+	   	resetImplicitTimeout(5);
+		try{
+	   		Assert.assertTrue("End User License agreements page not displayed", eulaPage.isEndUserLicensePageDisplayed());
+	   		logPassMessage("End User License agreement page displayed successfully");
+	   		flag = true;
+	   	}
+	   	catch(Exception e){
+	   		System.out.println("*************EXCEPTION  "+e);
+	    	logWarningMessage("Eula did not appeared");
+	    	flag = false;
+	   	}
+	   	if(flag){
+	   		Assert.assertTrue("MindTap Eula link not displayed", eulaPage.isMindTapEulaDisplayed());
+	   		logPassMessage("MindTap Eula link displayed successfully");
+	   		Assert.assertTrue("Knewton Eula link not displayed", eulaPage.isKnewtonEulaDisplayed());
+	   		logPassMessage("Knewton Eula link displayed Successfully");
+	   		eulaPage.clickMinTapEula();
+	   		Assert.assertEquals("Mind Tap Eula content not displayed",eulaPage.mindTapEulaContent(),"MINDTAP SERVICE AGREEMENT");
+	   		logPassMessage("Content present in MindTap eula");
+	   		eulaPage.clickMindTapBackButton();
+	   		eulaPage.clickKnewtonEula();
+	   		Assert.assertEquals("Knewton Eula content not displayed",eulaPage.knewtonEulaContent(),"Knewton Terms of Service");
+	   		logPassMessage("Content present in Knewton Eula");
+	   		eulaPage.clickKnewtonBackButton();	
+	   		eulaPage.clickEulaCheckboxes();
+	   		eulaPage.clickAcceptButton();
+	   		logPassMessage("Eulas accepted successfully");
+	   	}
+	  	mindTapLPNPage.clickEnter();
+	  	if(currentLogin.equals("knewton_automation_inst01@qai.com")||
+				currentLogin.equals("knewton_automation_inst02@qai.com")){
+			Assert.assertTrue("Dashboard not displayed", mindTapDashboard.isMindtapDashboardDisplayed());
+	    	logPassMessage("Dashboard displayed successfully");
+	    	mindTapDashboard.disableDashboard();
+		}
+				
 	}
 }

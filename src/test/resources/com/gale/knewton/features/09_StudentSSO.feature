@@ -6,7 +6,7 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
   and also be able to Enroll and Launch courses from the dashboard
 
 
- @LoginStudent @StudentLoginAndLaunchCourse @SmokeAnderson @SmokeGulati
+ @LoginStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
  Scenario Outline: I want to login successfully as a student on providing valid credentials
     Given I am on the Cengage Learning Login Page to login as student
     When I provide student username as <username> and password as <password> and hit login button
@@ -24,11 +24,12 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
  	And confirm the course on Confirm Course Information page
  	Then I should be able to see the Course on dashboard under My Courses & Materials
  
- @LaunchCourseAsStudent @StudentLoginAndLaunchCourse @SmokeAnderson @SmokeGulati
+ @LaunchCourseAsStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
  Scenario: I want to launch course successfully
  	Given I am on the Cengage Learning student's sso dashboard
  	When I open the course and click launch
- 	Then I accept Eula if appears and redirected to MindTap LPN page
+ 	And verify presence of Eula and accept EULA if present
+ 	Then I am on Student's LPN page
   
  @LogoutStudent
  Scenario: I want to logout successfully as a student
