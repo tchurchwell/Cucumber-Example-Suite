@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
-tags={"@SmokeGulati"},
+tags={"@SmokeAnderson"},
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
 

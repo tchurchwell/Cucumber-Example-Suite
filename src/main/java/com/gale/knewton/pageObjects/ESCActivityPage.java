@@ -10,7 +10,7 @@ import com.gale.knewton.util.YamlReader;
 public class ESCActivityPage extends BaseWebComponent {
 
 private String frame_Esc_css = "iframe[title='Adaptive App App']";
-private String EscError_xpath = "//*[@class='ng-binding']";
+private String EscError_css = "#error p.ng-binding";
 private String btn_closeIcon_class = "closeActivity";
 private String btn_Next_Css = "input[value='Next']";
 private String link_MaterReport_id = "mastery";
@@ -22,9 +22,11 @@ private String instChapter;
 		hardWait(1);
 		switchToFrame(findElementByCssPath(frame_Esc_css));
 		hardWait(2);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EscError_xpath)));
-		String errorinst = findElementByXpath(EscError_xpath).getText();
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(EscError_css)));
+		String errorinst = findElementByCssPath(EscError_css).getText();
 		switchToDefaultContent();
+		System.out.println(error);
+		System.out.println(errorinst);
 		return (error.equals(errorinst));
 	}
 	
