@@ -6,7 +6,18 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
   and also be able to Enroll and Launch courses from the dashboard
 
 
- @LoginStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
+ @LoginStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson 
+ Scenario Outline: I want to login successfully as a student on providing valid credentials
+    Given I am on the Cengage Learning Login Page to login as student
+    When I provide student username as <username> and password as <password> and hit login button
+    Then I should be able to login successfully as a student
+    
+ Examples:
+ 
+ 	| username            | password |
+ 	| knewton_automation_stu01@qai.com | A123456  |
+ 	
+ @SmokeGulati
  Scenario Outline: I want to login successfully as a student on providing valid credentials
     Given I am on the Cengage Learning Login Page to login as student
     When I provide student username as <username> and password as <password> and hit login button

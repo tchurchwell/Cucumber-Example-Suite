@@ -49,7 +49,6 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 	}
 
 	public static WebDriver getDriver() {
-		//browser = YamlReader.getYamlValue("browser");
 		browser = System.getProperty("browser", YamlReader.getYamlValue("browser"));
 		String server = YamlReader.getYamlValue("seleniumserver");
 		if (server.equalsIgnoreCase("local")) {

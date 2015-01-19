@@ -55,6 +55,7 @@ private String instChapter;
 
 	public boolean verifyChapterNameOnMasteryReport(){
 		String chapter;
+		hardWait(2);
 		chapter = findElementByXpath(lbl_EscChapter_xpath).getText();
 		instChapter = PropFileHandler.readProperty("EscChapterName", YamlReader.getData("propertyfilepath"));
 		switchToDefaultContent();

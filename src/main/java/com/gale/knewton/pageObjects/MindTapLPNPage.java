@@ -44,7 +44,6 @@ public void collapseLPNFolders(){
 }
 
 	public boolean getInstLPNDisplayed() {
-		//hardWait(5);
 		boolean flag;
 		flag = isLPNDisplayedAtInstructor();
 			if(flag){
@@ -61,7 +60,6 @@ public void collapseLPNFolders(){
 	}
 	
 	public boolean isLPNDisplayedAtInstructor() {
-		//hardWait(3);
 		return	waitAndLocateElementByXpath(div_LPN_xpath).isDisplayed();
 	}
 	
