@@ -4,13 +4,13 @@ Feature: Instructor preview Assessment - SAA activity
   When I log in to MindTap course,
   I can preview - launch and submit SAA activity
 
- @InstLaunchSAA @SmokeGulati
+ @InstLaunchSAA @SmokeGulati @InstLaunchSubmitSAA
  Scenario: Launch SAA distinct activity as instructor
  	Given I should be on instructor's LPN page
  	When I click the already linked SAA activity
  	Then I am on SAA distinct activity page
  	 
- @InstSubmitSAA @SmokeGulati
+ @InstSubmitSAA @SmokeGulati @InstLaunchSubmitSAA
  Scenario: Submit SAA distinct activity as instructor
  	Given I should be on SAA activity page
  	When I click on 'Start Activity' button on overview page

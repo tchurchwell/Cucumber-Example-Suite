@@ -18,15 +18,13 @@ private String lbl_EscChapter_xpath = ".//*[@id='masteryList']/ul/span/li/p[1]";
 private String lbl_ExamTitle_xpath = ".//*[@id='examTitle']/h2/span";
 private String instChapter;
 	
-	public boolean isESCErrorDisplayed(String error){
+	public boolean isErrorDisplayed(String error){
 		hardWait(1);
 		switchToFrame(findElementByCssPath(frame_Esc_css));
 		hardWait(2);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(EscError_css)));
 		String errorinst = findElementByCssPath(EscError_css).getText();
 		switchToDefaultContent();
-		System.out.println(error);
-		System.out.println(errorinst);
 		return (error.equals(errorinst));
 	}
 	

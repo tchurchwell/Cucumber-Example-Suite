@@ -25,7 +25,7 @@ public class ExamStudyCenterConfigPage extends BaseWebComponent {
 	}
 	
 	public void enterExamDueDate(){
-		findElementById(inp_examDueDate_id).click();
+		hardWait(1);
 		findElementById(inp_examDueDate_id).clear();
 		hardWait(1);
 		findElementById(inp_examDueDate_id).sendKeys(getNextMonthDate());

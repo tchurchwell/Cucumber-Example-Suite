@@ -35,6 +35,8 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String link_ESCactivity_xpath = "//a[contains(.,'${activitytitle}')]";
 	private String ESCactivitydynamicxpath;
 	
+	private String link_USCactivity_xpath = "//a[contains(text(),'Study Center')]";
+	
 	
 public void collapseLPNFolders(){
 	hardWait(2);
@@ -129,8 +131,9 @@ public void collapseLPNFolders(){
 	}
 	
 	public boolean verifySavedSAAOnLPN() {
-		activityDynamicXpath = getLocator(link_activityName_xpath,PropFileHandler.readProperty("saaActivityTitle",
-				(YamlReader.getData("propertyfilepath"))));
+		activityDynamicXpath = getLocator(link_activityName_xpath,
+				PropFileHandler.readProperty("saaActivityTitle",
+			      (YamlReader.getData("propertyfilepath"))));
 		hardWait(2);	
 		return findElementByXpath(activityDynamicXpath).isDisplayed();
 		
@@ -141,6 +144,7 @@ public void collapseLPNFolders(){
 				PropFileHandler.readProperty(
 						"SimpleAssessmentActivityTitle",
 						(YamlReader.getData("propertyfilepath"))));
+		hardWait(1);
 		findElementByXpath(activityDynamicXpath).click();
 	}
 	
@@ -153,10 +157,9 @@ public void collapseLPNFolders(){
 	}
 
 	public boolean verifySavedESCActivityOnLPN() {
-		
 		activityDynamicXpath = getLocator(link_activityName_xpath, 
 				PropFileHandler.readProperty("ESCTitle",
-				(YamlReader.getData("propertyfilepath"))));
+						(YamlReader.getData("propertyfilepath"))));
 		hardWait(1);
 		return findElementByXpath(activityDynamicXpath).isDisplayed();
 	
@@ -204,6 +207,20 @@ public void collapseLPNFolders(){
 		hardWait(1);
 		findElementByXpath(activityDynamicXpath).click();
 	}
-
+	
+	public void navigateToChapterLPN(){
+		if(LoginPage.product.equals("Anderson")){
+			hardWait(1);
+			findElementByXpath(img_firstUnit_xpath).click();
+		}
+		else
+			if(LoginPage.product.equals("Gulati")){
+			hardWait(1);
+			findElementByXpath(img_ChapterFolderGul_xpath).click();
+			hardWait(1);
+			findElementByXpath(img_firstUnit_xpath).click();
+			}	
+	}
+	
 
 }

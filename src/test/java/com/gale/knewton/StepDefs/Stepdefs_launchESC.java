@@ -24,7 +24,7 @@ public class Stepdefs_launchESC extends BaseWebComponent {
 	@Then("^I am on Exam Study Center page and error message displayed as (.*)$")
 	public void i_am_on_exam_study_center_page(String Error){
 		escActivityPage = new ESCActivityPage();
-		Assert.assertTrue("Incorrect error message is displayed",escActivityPage.isESCErrorDisplayed(Error));
+		Assert.assertTrue("Incorrect error message is displayed",escActivityPage.isErrorDisplayed(Error));
 		logPassMessage("Error message is displayed successfully on ESC activity page");
 		escActivityPage.closeActivity();
 	}

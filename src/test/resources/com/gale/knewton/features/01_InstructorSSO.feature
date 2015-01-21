@@ -5,7 +5,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
   I should be able to login successfully on SSO dashboard and logout successfully
   and able to Create, Enroll and Launch course
 
-  @LoginAsInstructor @LogincreateLaunch @LoginLaunch @SmokeAnderson
+  @LoginAsInstructor @LogincreateLaunch @LoginAnderson @SmokeAnderson
   Scenario Outline: I want to login as an instructor on providing valid credentials 
     Given I am on the Cengage Learning Login Page to login as instructor
     When I provide instructor username as <username> and password as <password> and hit login button
@@ -16,7 +16,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  	| username            | password |
  	| knewton_automation_inst01@qai.com | A123456  |
  
- @SmokeGulati	
+ @SmokeGulati @LoginGulati
   Scenario Outline: I want to login as an instructor on providing valid credentials 
     Given I am on the Cengage Learning Login Page to login as instructor
     When I provide instructor username as <username> and password as <password> and hit login button

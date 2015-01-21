@@ -50,7 +50,7 @@ public class MindTapDescriptionPage extends BaseWebComponent {
 	}
 
 	public void enterESCTitle() throws IOException {
-		hardWait(2);
+		hardWait(4);
 		findElementById(inp_title_id).clear();
 		findElementById(inp_title_id).sendKeys(escTitle);
 		logPassMessage("Title entered as: " + escTitle);
