@@ -20,6 +20,7 @@ public class LoginPage extends BaseWebComponent{
 		findElementById(inp_userName_id).sendKeys(userName);
 		findElementById(inp_password_id).sendKeys(password);
 		findElementByCssPath(btn_Submit_css).click();
+		PropFileHandler.writeToFile("CurrentLogin", userName, YamlReader.getYamlValue("propertyfilepath"));
 		if((userName.equals("knewton_automation_inst01@qai.com"))
 				||(userName.equals("knewton_automation_stu01@qai.com"))){
 		PropFileHandler.writeToFile("Product", "Anderson", YamlReader.getYamlValue("propertyfilepath"));

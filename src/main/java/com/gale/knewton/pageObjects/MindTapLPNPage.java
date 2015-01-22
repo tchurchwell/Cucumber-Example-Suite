@@ -222,5 +222,14 @@ public void collapseLPNFolders(){
 			}	
 	}
 	
+	public boolean isUSCDisplayed(){
+		hardWait(1);
+		return findElementByXpath(link_USCactivity_xpath).isDisplayed();
+	}
+	
+	public void clickUSCActivity(){
+		hardWait(1);
+		findElementByXpath(link_USCactivity_xpath).click();
+	}
 
 }
