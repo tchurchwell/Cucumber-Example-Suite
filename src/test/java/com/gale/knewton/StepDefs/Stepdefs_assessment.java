@@ -19,16 +19,11 @@ public class Stepdefs_assessment extends BaseWebComponent {
 	private MindTapDescriptionPage mindTapDescriptionPage = new MindTapDescriptionPage();
 	private MindTapLPNPage mindTapLPNPage = new MindTapLPNPage();
 
-	@Then("^I select Grove Distinct Activity from the list$")
-	public void I_select_Grove_Distinct_Activity_from_the_list() {
-		addActivityPage.selectAssessment();
-	}
-	
 	@Then("^Creation type display as \"(.*?)\"$")
-	public void verify_the_creation_type_On_Grove_Activity(String actType) {
+	public void verify_the_creation_type_as(String actType) {
 		Assert.assertTrue("Creation type '"+actType+"' is not displayed", 
-				addActivityPage.verifySACreationTypeForGroveActivity().equals(actType));
-		logPassMessage(actType + " is displaying as creation type for Grove Distinct Activity");		
+				addActivityPage.verifySACreationTypeForAssessmentActivity().equals(actType));
+		logPassMessage(actType + " is displaying as creation type for Assessment");		
 
 	}
 	
@@ -36,7 +31,7 @@ public class Stepdefs_assessment extends BaseWebComponent {
 	public void creation_type_displayed_as(String activity){
 	   Assert.assertTrue("Creation type '"+activity+"' is not displayed", 
 			   addActivityPage.verifySAACreationTypeForGDA().equals(activity));
-	   logMessage(activity+" is displayed successfully as creation type for GDA");
+	   logMessage(activity+" is displayed successfully as creation type for Assessment");
 	}
 	
 	//****************Link SAA Distinct Activity*****************

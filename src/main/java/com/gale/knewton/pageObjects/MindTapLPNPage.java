@@ -36,6 +36,7 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String ESCactivitydynamicxpath;
 	
 	private String link_USCactivity_xpath = "//a[contains(text(),'Study Center')]";
+	private String lbl_USCchapter_class = "lpn_title";
 	
 	
 public void collapseLPNFolders(){
@@ -153,6 +154,7 @@ public void collapseLPNFolders(){
 				PropFileHandler.readProperty(
 						"saaActivityTitle",
 						(YamlReader.getData("propertyfilepath"))));
+		hardWait(1);
 		findElementByXpath(activityDynamicXpath).click();
 	}
 
@@ -210,7 +212,7 @@ public void collapseLPNFolders(){
 	
 	public void navigateToChapterLPN(){
 		if(LoginPage.product.equals("Anderson")){
-			hardWait(1);
+			hardWait(2);
 			findElementByXpath(img_firstUnit_xpath).click();
 		}
 		else
@@ -222,12 +224,15 @@ public void collapseLPNFolders(){
 			}	
 	}
 	
-	public boolean isUSCDisplayed(){
+	public boolean isUSCLinkDisplayed(){
 		hardWait(1);
 		return findElementByXpath(link_USCactivity_xpath).isDisplayed();
 	}
 	
 	public void clickUSCActivity(){
+		hardWait(1);
+		String usc = findElementByClass(lbl_USCchapter_class).getText();
+		PropFileHandler.writeToFile("USCchapter", usc, YamlReader.getYamlValue("propertyfilepath"));
 		hardWait(1);
 		findElementByXpath(link_USCactivity_xpath).click();
 	}

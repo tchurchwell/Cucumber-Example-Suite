@@ -1,18 +1,18 @@
-Feature: Instructor preview Inline Assessment- Simple Assessment Activity
+Feature: Student takes Inline Activity - Simple Assessment Activity
   
-  As an instructor,
+  As a Student,
   When I log in to MindTap course,
-  I can preview - launch and submit inline Simple Assessment activity
+  I can take - launch and submit inline Simple Assessment activity
 
- @InstLaunchInlineSA @LaunchSubmitInlineSA @SmokeAnderson @SmokeGulati
- Scenario: Instructor launches inline Simple Assessment distinct activity
- 	Given I should be on instructor's LPN page
+ @StudLaunchInlineSA @StuLaunchSubmitInline @SmokeAnderson @SmokeGulati
+ Scenario: Student launches inline Simple Assessment distinct activity
+ 	Given I should be on Student's LPN page
  	And I Navigate to the First Ebook Document
  	When I click start for the linked inline Simple Assessment activity
  	Then I am on inline Simple Assessment activity page
  	
- @InstSubmitInlineSA @LaunchSubmitInlineSA @SmokeAnderson @SmokeGulati
- Scenario: Instructor submits inline Simple Assessment distinct activity
+ @StudSubmitInlineSA @StuLaunchSubmitInline @SmokeAnderson @SmokeGulati
+ Scenario: Student submits inline Simple Assessment distinct activity
  	Given I should be on inline Simple Assessment activity page
  	When I click Start Activity and submit answer for a Question
  	And I click Check My Work button

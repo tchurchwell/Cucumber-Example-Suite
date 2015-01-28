@@ -53,13 +53,13 @@ public class Stepdefs_inlineAssessment extends BaseWebComponent {
 	
 	@Then("^verify creation type display as \"(.*?)\"$")
 	public void verify_creation_type_display_as_and(String actType) {
-		Assert.assertTrue("Creation type '"+actType+"' is not displayed", addActivityPage.verifySACreationTypeForGroveActivity().equals(actType));
-		logPassMessage(actType + " is displaying as creation type for Grove Inline Activity");		
+		Assert.assertTrue("Creation type '"+actType+"' is not displayed", addActivityPage.verifySACreationTypeForAssessmentActivity().equals(actType));
+		logPassMessage(actType + " is displaying as creation type for Inline Assessment Activity");		
 	}
 	
 	
 	@When("^I save inline Simple Assessment activity with default options$")
-	public void i_save_distinct_Simple_Assessment_activity_with_default_options() throws IOException {
+	public void i_save_inline_Simple_Assessment_activity_with_default_options() throws IOException {
 		mindTapDescriptionPage = new MindTapDescriptionPage();
 		mindTapDescriptionPage.enterinlineSimpAssessTitle();
 		mindTapDescriptionPage.clickSaveButton();

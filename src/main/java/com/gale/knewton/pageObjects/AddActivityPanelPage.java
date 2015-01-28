@@ -36,7 +36,7 @@ public class AddActivityPanelPage extends BaseWebComponent {
 		findElementByXpath(Link_examStudyCenter_xpath).click();
 	}
 
-	public String verifySACreationTypeForGroveActivity() {
+	public String verifySACreationTypeForAssessmentActivity() {
 		switchToFrame(findElementById(iframe_distinctActivity_id));
 		String getSimpleAssessment = waitAndLocateElementByXpath(btn_simpleAssessment_xpath).getText();
 		switchToDefaultContent();

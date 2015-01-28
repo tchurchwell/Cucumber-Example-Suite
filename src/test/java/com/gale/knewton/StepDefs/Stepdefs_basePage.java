@@ -55,7 +55,7 @@ public class Stepdefs_basePage extends BaseWebComponent {
 		logPassMessage("I am on Add Activity page");
 		addActivityPage = new AddActivityPanelPage(); 
 		addActivityPage.selectAssessment();
-		Assert.assertEquals("Select Grove Distinct Activity page do not appear","Select Assessment",
+		Assert.assertEquals("Select Assessment page do not appear","Select Assessment",
 				findElementByXpath(lbl_GDAHeading_xpath).getText());
 	}
 	

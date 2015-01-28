@@ -19,7 +19,7 @@ And Relevant chapter content is displayed
 
 @StuClosesESC @SmokeAnderson @SmokeGulati
 Scenario: Student is able to close ESC activity
-Given: I should be on Exam Study Center page
+Given I should be on Exam Study Center page
 When I click close icon
 Then I am on Student's LPN page
 

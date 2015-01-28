@@ -150,7 +150,8 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 	}
 
 	public static void tearDown() {
-		driver.quit();
+		 driver.quit();
+       
 	}
 
 	static Map<String, String> productName = new HashMap<String, String>();

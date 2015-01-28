@@ -1,6 +1,7 @@
 package com.gale.knewton.StepDefs;
 
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
@@ -11,10 +12,12 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
-tags={"@LogincreateLaunch, @LoginAnderson, @InstLaunchUSC, @InstAccessUSC"},
+tags={"@LoginLaunch, @LoginAnderson"},
+
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
-/* Cucumber tags
+/* 
+ * Cucumber tags
  * Instructor: @LogincreateLaunch, @LoginLaunch
  * Student: @LoginEnrollAndAcceptEula, @StudentLoginAndLaunchCourse
  * GDA: @AccessGDAAndlinkSimpleAssessment, @LaunchSubmitSA, @StuLaunchSubmitDistnct
@@ -29,8 +32,8 @@ public class Test_SpecificFeature {
 		Stepdefs_baseTest.setUp();
 	}
 
-	/*@AfterClass
+	@AfterClass
 	public static void classTeardown() {
 		Stepdefs_baseTest.tearDown();
-	}*/
+	}
 }	

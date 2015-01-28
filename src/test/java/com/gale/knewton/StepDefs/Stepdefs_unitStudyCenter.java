@@ -22,7 +22,7 @@ public class Stepdefs_unitStudyCenter extends BaseWebComponent {
 	@Then("^Unit Exam Center link should be present$")
 	public void unit_Exam_Center_link_should_be_present() {
 	   mindtapLPN = new MindTapLPNPage();
-	   Assert.assertTrue("Unit Study Center link not displayed", mindtapLPN.isUSCDisplayed());
+	   Assert.assertTrue("Unit Study Center link not displayed", mindtapLPN.isUSCLinkDisplayed());
 	   logPassMessage("Unity Study Center link displayed successfully");
 	   mindtapLPN.navigateToBaseLPN();
 	}
