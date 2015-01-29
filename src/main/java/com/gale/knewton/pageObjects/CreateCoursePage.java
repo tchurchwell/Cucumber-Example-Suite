@@ -12,10 +12,9 @@ public class CreateCoursePage extends BaseWebComponent {
 
 	private Long timeStamp = System.currentTimeMillis();
 	private String courseName = "Course_Automation_" + timeStamp;
-	private String timeZone = "America/Mexico_City";
+	private String timeZone = "America/New_York";
 
 	private String radio_createNewCourse_xpath = "//*[@id='createNewCourse']";
-	//private String btn_continue_linktext = "//*[@id='courseOptionForm']/div[9]/a";
 	private String btn_continue_linktext = "Continue";
 	private String inp_courseName_xpath = "//*[@id='courseName']";
 	private String inp_beginDate_xpath = "//*[@id='beginDate']";
@@ -37,8 +36,8 @@ public class CreateCoursePage extends BaseWebComponent {
 		findElementByXpath(inp_courseName_xpath).sendKeys(courseName);
 		findElementByXpath(inp_beginDate_xpath).sendKeys(getCurrentDate());
 		findElementByXpath(inp_endDate_xpath).sendKeys(getNextMonthDate());
-		Select dropdown = new Select(
-				findElementByXpath(dropdown_timeZone_xpath));
+		PropFileHandler.writeToFile("CourseEndDate", getNextMonthDate(), YamlReader.getYamlValue("propertyfilepath"));
+		Select dropdown = new Select(findElementByXpath(dropdown_timeZone_xpath));
 		dropdown.selectByValue(timeZone);
 	}
 	

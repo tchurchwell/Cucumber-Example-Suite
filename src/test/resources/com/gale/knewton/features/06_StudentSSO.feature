@@ -15,7 +15,7 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_stu01@qai.com | A123456  |
+ 	| knewton_automation_stu04@qai.com | A123456  |
  	
  @SmokeGulati
  Scenario Outline: I want to login successfully as a student on providing valid credentials
@@ -26,7 +26,7 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_stu02@qai.com | A123456  |
+ 	| knewton_automation_stu05@qai.com | A123456  |
 
  @EnrollCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
  Scenario: I want to enroll into a course successfully

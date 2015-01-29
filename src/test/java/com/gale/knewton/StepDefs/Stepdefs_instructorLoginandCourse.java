@@ -158,8 +158,8 @@ public class Stepdefs_instructorLoginandCourse extends BaseWebComponent {
 	   		logPassMessage("Eulas accepted successfully");
 	   	}
 	  	mindTapLPNPage.clickEnter();
-	  	if(currentLogin.equals("knewton_automation_inst01@qai.com")||
-				currentLogin.equals("knewton_automation_inst02@qai.com")){
+	  	if(currentLogin.equals("knewton_automation_inst04@qai.com")||
+				currentLogin.equals("knewton_automation_inst05@qai.com")){
 			Assert.assertTrue("Dashboard not displayed", mindTapDashboard.isMindtapDashboardDisplayed());
 	    	logPassMessage("Dashboard displayed successfully");
 	    	mindTapDashboard.disableDashboard();

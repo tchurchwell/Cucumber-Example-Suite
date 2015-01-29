@@ -29,8 +29,8 @@ public class Stepdefs_inlineAssessment extends BaseWebComponent {
 	@And("^I Navigate to the First Ebook Document")
 	public void navigate_To_EBookDocument(){
 		mindTapLPNPage = new MindTapLPNPage();
-		mindTapLPNPage.navigateToEBookDocument();
 		eBookDocPage = new EbookDocumentPage();
+		mindTapLPNPage.navigateToEBookDocument();
 		flag = eBookDocPage.isUserOnEbookDocumentPage();
 		if(!flag){
 			refresh();

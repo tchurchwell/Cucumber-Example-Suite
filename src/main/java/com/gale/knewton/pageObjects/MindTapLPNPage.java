@@ -213,14 +213,14 @@ public void collapseLPNFolders(){
 	public void navigateToChapterLPN(){
 		if(LoginPage.product.equals("Anderson")){
 			hardWait(2);
-			findElementByXpath(img_firstUnit_xpath).click();
+			waitAndLocateElementByXpath(img_firstUnit_xpath).click();
 		}
 		else
 			if(LoginPage.product.equals("Gulati")){
 			hardWait(1);
-			findElementByXpath(img_ChapterFolderGul_xpath).click();
+			waitAndLocateElementByXpath(img_ChapterFolderGul_xpath).click();
 			hardWait(1);
-			findElementByXpath(img_firstUnit_xpath).click();
+			waitAndLocateElementByXpath(img_firstUnit_xpath).click();
 			}	
 	}
 	

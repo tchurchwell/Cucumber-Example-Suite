@@ -21,14 +21,14 @@ public class LoginPage extends BaseWebComponent{
 		findElementById(inp_password_id).sendKeys(password);
 		findElementByCssPath(btn_Submit_css).click();
 		PropFileHandler.writeToFile("CurrentLogin", userName, YamlReader.getYamlValue("propertyfilepath"));
-		if((userName.equals("knewton_automation_inst01@qai.com"))
-				||(userName.equals("knewton_automation_stu01@qai.com"))){
+		if((userName.equals("knewton_automation_inst04@qai.com"))
+				||(userName.equals("knewton_automation_stu04@qai.com"))){
 		PropFileHandler.writeToFile("Product", "Anderson", YamlReader.getYamlValue("propertyfilepath"));
 		product = "Anderson";
 		}
 		else
-			if((userName.equals("knewton_automation_inst02@qai.com"))
-					||(userName.equals("knewton_automation_stu02@qai.com"))){
+			if((userName.equals("knewton_automation_inst05@qai.com"))
+					||(userName.equals("knewton_automation_stu05@qai.com"))){
 				PropFileHandler.writeToFile("Product", "Gulati", YamlReader.getYamlValue("propertyfilepath"));
 				product = "Gulati";
 			}else{

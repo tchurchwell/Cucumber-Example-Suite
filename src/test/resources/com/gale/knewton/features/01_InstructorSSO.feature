@@ -14,7 +14,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_inst01@qai.com | A123456  |
+ 	| knewton_automation_inst04@qai.com | A123456  |
  
  @SmokeGulati @LoginGulati
   Scenario Outline: I want to login as an instructor on providing valid credentials 
@@ -25,7 +25,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  Examples:
  
  	| username            | password |
- 	| knewton_automation_inst02@qai.com | A123456  |
+ 	| knewton_automation_inst05@qai.com | A123456  |
  		
  
  @CreateCourse @LogincreateLaunch @SmokeAnderson @SmokeGulati

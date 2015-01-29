@@ -24,13 +24,6 @@ public class ExamStudyCenterConfigPage extends BaseWebComponent {
 		return heading;	
 	}
 	
-	public void enterExamDueDate(){
-		hardWait(1);
-		findElementById(inp_examDueDate_id).clear();
-		hardWait(1);
-		findElementById(inp_examDueDate_id).sendKeys(getNextMonthDate());
-	}
-	
 	public void selectChapterCheckbox(){
 		findElementByXpath(chkbox_Chapter_xpath).click();
 		String chapterName = findElementByXpath(lbl_ESCchapterName_xpath).getText();
@@ -42,5 +35,15 @@ public class ExamStudyCenterConfigPage extends BaseWebComponent {
 		hardWait(1);
 		findElementById(btn_save_id).click();
 		switchToDefaultContent();
+	}
+	
+	public boolean verifyExamDueDate(){
+		String escDueDate = findElementById(inp_examDueDate_id).getAttribute("value");
+		String courseEndDate = PropFileHandler.readProperty("CourseEndDate", YamlReader.getYamlValue("propertyfilepath"));
+		logMessage(courseEndDate);
+		logMessage(escDueDate);
+		if(courseEndDate.equals(escDueDate))
+			return true;
+		else return false;
 	}
 }

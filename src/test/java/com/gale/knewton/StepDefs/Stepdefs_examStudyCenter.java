@@ -10,6 +10,7 @@ import com.gale.knewton.pageObjects.ExamStudyCenterConfigPage;
 import com.gale.knewton.pageObjects.MindTapDescriptionPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -35,7 +36,6 @@ public class Stepdefs_examStudyCenter extends BaseWebComponent {
 	
 	@When("^I save ESC activity after completing required details on Config page and following MindTap Description page$")
 	public void i_enter_required_details_and_following_MindTap_Description_page_and_save() throws IOException {
-	    escConfigPage.enterExamDueDate();
 	    escConfigPage.selectChapterCheckbox();
 	    escConfigPage.clickSave();
 	    
@@ -52,5 +52,11 @@ public class Stepdefs_examStudyCenter extends BaseWebComponent {
 		Assert.assertTrue("Published Exam Study Center is not displayed on LPN ",mindTapLPNPage.verifySavedESCActivityOnLPN());
 		logPassMessage("ESC Activity is verified on LPN as distinct activity");
 	}
+	
+	 @And("^Default Exam Target Due Date is same as course end date in MM/DD/YYY format$")
+		public void default_exam_target_due_date() {
+		 Assert.assertTrue("ESC due date is not same as course end date",escConfigPage.verifyExamDueDate());
+			logPassMessage("ESC due date is same as course end date");
+	 }
 	
 }
