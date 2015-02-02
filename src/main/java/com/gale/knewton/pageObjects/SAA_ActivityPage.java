@@ -26,7 +26,8 @@ public class SAA_ActivityPage extends BaseWebComponent {
 			switchToFrame(findElementByCssPath(grove_frame_css));
 			hardWait(1);
 			switchToFrame(findElementById(frame2_Submit_id));
-			flag = findElementByXpath(lbl_overview_xpath).isDisplayed();
+			resetImplicitTimeout(20);
+			flag = waitAndLocateElementByXpath(lbl_overview_xpath).isDisplayed();
 			switchToDefaultContent();
 		}
 		catch(Exception e1){

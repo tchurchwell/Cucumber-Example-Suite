@@ -27,6 +27,7 @@ public class CreateCoursePage extends BaseWebComponent {
 	private String lnk_returnToInstdashboard_xpath = "//a[text()='Return to Instructor Dashboard']";
 
 	public void selectCreateNewCourseRadioBtnAndContinue() {
+		hardWait(2);
 		findElementByXpath(radio_createNewCourse_xpath).click();
 		hardWait(1);
 		findElementByLinkText(btn_continue_linktext).click();

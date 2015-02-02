@@ -17,6 +17,7 @@ private String link_MaterReport_id = "mastery";
 private String lbl_EscChapter_xpath = ".//*[@id='masteryList']/ul/span/li/p[1]";
 private String lbl_ExamTitle_xpath = ".//*[@id='examTitle']/h2/span";
 private String instChapter;
+private String product;
 	
 	public boolean isErrorDisplayed(String error){
 		hardWait(1);
@@ -65,13 +66,14 @@ private String instChapter;
 	
 	public boolean verifyEscContent(){
 		int chapterNumber = 0;
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		switchToFrame(findElementByCssPath(frame_Esc_css));
 		String chapter = findElementByXpath(lbl_EscChapter_xpath).getText();
 		String[] instChapterNumber = chapter.split(":");
-		if(LoginPage.product.equals("Anderson"))		
+		if(product.equals("Andersen"))		
 		chapterNumber = Integer.parseInt(instChapterNumber[0].substring(8));
 		else
-			if(LoginPage.product.equals("Gulati"))
+			if(product.equals("Gulati"))
 				chapterNumber = Integer.parseInt(instChapterNumber[0]);
 		String[] arr = findElementByXpath(lbl_ExamTitle_xpath).getText().split(" ");
 		String arr2 = arr[0].substring(2);

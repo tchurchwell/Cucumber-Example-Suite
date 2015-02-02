@@ -4,7 +4,7 @@ Feature: instructor access and preview Assessment
   When I log in to MindTap course,
   I land on MindTap LPN for course, access Assessment, link it to LPN and Preview.
 
-@AccessAssessment @SmokeAnderson @SmokeGulati
+@AccessAssessmentSA @SmokeAnderson @SmokeGulati
  Scenario: I want to access Assessment, create and link Simple Assessment to LPN
  	Given I am on Select Assessment page
  	And Creation type display as "Simple Assessment"
@@ -14,7 +14,7 @@ Feature: instructor access and preview Assessment
 	Then I am on instructor's LPN page
 	And verify created Simple Assessment activity should linked to LPN
 	
-@AccessAssessment @SmokeGulati
+@AccessAssessmentSAA @SmokeGulati
 Scenario: I want to access Assessment, create and link SAA activity to LPN
 	Given I am on Select Assessment page
 	And Creation type displayed as "SAA"

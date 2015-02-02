@@ -31,6 +31,7 @@ public class EulaPage extends BaseWebComponent{
 	
 		
 	public boolean isEndUserLicensePageDisplayed(){
+		resetImplicitTimeout(30);
 		return waitAndLocateElementByXpath(div_EndUserLicense_xpath).isDisplayed();
 	}
 	

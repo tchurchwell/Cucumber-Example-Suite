@@ -1,6 +1,5 @@
 package com.gale.knewton.StepDefs;
 
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -12,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
-tags={"@LoginLaunch, @LoginAnderson, @AccessESCandLinkToLPN "},
+tags={"@LoginLaunch, @LoginGulati, @AccessAssessmentSA, @LaunchSubmitSA "},
 
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
 
@@ -20,10 +19,10 @@ format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
  * Cucumber tags
  * Instructor: @LogincreateLaunch, @LoginLaunch
  * Student: @LoginEnrollAndAcceptEula, @StudentLoginAndLaunchCourse
- * GDA: @AccessGDAAndlinkSimpleAssessment, @LaunchSubmitSA, @StuLaunchSubmitDistnct
- * GIA: @StuLaunchSubmitInline, @LaunchSubmitInlineSA, @AccessinlineSAAndlinkToEBook
+ * Assessment: @AccessAssessmentSA, @LaunchSubmitSA, @StuLaunchSubmitDistnct
+ * Inline Assessment: @StuLaunchSubmitInline, @LaunchSubmitInlineSA, @AccessinlineSAAndlinkToEBook
  * ESC: @AccessESCandLinkToLPN, @InstLaunchESC, @StudLaunchESC, @StuVerifyESC, @StuClosesESC
- * SAA: @InstLaunchSubmitSAA, @StuLaunchSubmitSAA
+ * SAA: @AccessAssessmentSA, @InstLaunchSubmitSAA, @StuLaunchSubmitSAA 
  */
 
 public class Test_SpecificFeature {

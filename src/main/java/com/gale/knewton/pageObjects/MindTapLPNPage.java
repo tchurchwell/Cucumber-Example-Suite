@@ -38,6 +38,8 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String link_USCactivity_xpath = "//a[contains(text(),'Study Center')]";
 	private String lbl_USCchapter_class = "lpn_title";
 	
+	private String product;
+	
 	
 public void collapseLPNFolders(){
 	hardWait(2);
@@ -79,7 +81,7 @@ public void collapseLPNFolders(){
 			findElementByCssPath(btn_closeOverlay_css).click();
 			}
 		catch (Exception e){
-			
+			System.out.println("*******Exception"+e);
 		}
 		}
 		
@@ -104,14 +106,15 @@ public void collapseLPNFolders(){
 	
 
 	public void navigateToEBookDocument() {
-		if(LoginPage.product.equals("Anderson")){
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
+		if(product.equals("Andersen")){
 			hardWait(1);
 			findElementByXpath(img_firstUnit_xpath).click();
 			hardWait(2);
 			findElementByXpath(div_thumbar_xpath).click();
 		}
 		else
-			if(LoginPage.product.equals("Gulati")){
+			if(product.equals("Gulati")){
 			hardWait(1);
 			findElementByXpath(img_ChapterFolderGul_xpath).click();
 			hardWait(1);
@@ -177,12 +180,13 @@ public void collapseLPNFolders(){
 	}
 	
 	public void navigateToBaseLPN(){
-		if(LoginPage.product.equals("Anderson")){
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
+		if(product.equals("Andersen")){
 		hardWait(3);
 		findElementByXpath(img_back_xpath).click();
 		}
 		else
-			if(LoginPage.product.equals("Gulati"))
+			if(product.equals("Gulati"))
 			{
 				hardWait(3);
 				findElementByXpath(img_back_xpath).click();
@@ -211,12 +215,13 @@ public void collapseLPNFolders(){
 	}
 	
 	public void navigateToChapterLPN(){
-		if(LoginPage.product.equals("Anderson")){
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
+		if(product.equals("Andersen")){
 			hardWait(2);
 			waitAndLocateElementByXpath(img_firstUnit_xpath).click();
 		}
 		else
-			if(LoginPage.product.equals("Gulati")){
+			if(product.equals("Gulati")){
 			hardWait(1);
 			waitAndLocateElementByXpath(img_ChapterFolderGul_xpath).click();
 			hardWait(1);

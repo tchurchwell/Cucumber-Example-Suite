@@ -3,9 +3,10 @@ package com.gale.knewton.StepDefs;
 import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
-import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SimpleAssessmentActivityPage;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -17,6 +18,7 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 	
 	private MindTapLPNPage mindTapLPNPage;
 	private SimpleAssessmentActivityPage simpleAssessmentActivityPage;
+	private String product;
 
 	
 	//********************Launch GDA Simple Assessment**************
@@ -51,10 +53,11 @@ public class Stepdefs_launchAndSubmitDistinctSA extends BaseWebComponent {
 	@And ("^I click on Check My Work button$")
 	public void i_click_on_Check_My_Work_button() {
 		simpleAssessmentActivityPage = new SimpleAssessmentActivityPage();
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		simpleAssessmentActivityPage.checkMyWork();
 		Assert.assertTrue("Feedback not displayed", simpleAssessmentActivityPage.isFeedbackDisplayed());
 		logPassMessage("Feedback displayed successfully");
-		if(LoginPage.product.equals("Anderson")){
+		if(product.equals("Andersen")){
 		Assert.assertTrue("Try Another Version button not displayed", simpleAssessmentActivityPage.isTryAnotherVersionbtnDisplayed());
 		logPassMessage("Try Another Version button displayed");
 		}

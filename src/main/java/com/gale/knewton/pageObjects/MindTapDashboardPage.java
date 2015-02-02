@@ -1,6 +1,7 @@
 package com.gale.knewton.pageObjects;
 
 import com.gale.knewton.base.BaseWebComponent;
+import com.gale.knewton.util.YamlReader;
 
 public class MindTapDashboardPage extends BaseWebComponent{
 	private String lbl_dashboard_xpath = "//h3[contains(.,'Dashboard')]";
@@ -18,6 +19,7 @@ public class MindTapDashboardPage extends BaseWebComponent{
 		findElementByCssPath(lnk_CourseSetting_css).click();
 		findElementByCssPath(chk_ToggleDashboard_css).click();
 		findElementById(btn_Save_id).click();
+		if(!(YamlReader.getYamlValue("browser").equalsIgnoreCase("IE")))
 		findElementById(btn_Save_id).click();
 		logPassMessage("Dashboard disabled successfully");
 	}

@@ -2,6 +2,8 @@ package com.gale.knewton.pageObjects;
 
 
 import com.gale.knewton.base.BaseWebComponent;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 public class SimpleAssessmentActivityPage extends BaseWebComponent {
 
@@ -16,30 +18,33 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String ereader_frame_css = "iframe[title='Reader App']";
 	private String frame2inline_Submit_class = "appFrame";
 	private String frame3inline_Submit_id ="easyXDM_activityService_cxp_Target_provider";
-	private boolean flag = false;
-	private String btn_startActivitySA_css= "#rhs-start";
+		private String btn_startActivitySA_css= "#rhs-start";
 	private String answer_optionAnd_xpath = "(//*[@class='q4-choice']//input)[1]";
 	private String answer_optionGul_xpath = "(//*[@class='ci-choices']//input)[1]";
 	private String lbl_submit_xpath = "//button[text()='Review & Submit']";
 	private String btn_submit_xpath = "//button[contains(.,'Grade Assignment Now')]";
 	
+	private String product;
+	private boolean flag = false;
+	
 		
 	public boolean isSimpleAssessmentLaunched() {
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		try
 			{
 				hardWait(1);
 				switchToFrame(findElementByCssPath(grove_frame_css));
 				hardWait(1);
 				switchToFrame(findElementById(frame2_Submit_id));
-				if(LoginPage.product.equals("Anderson")){
+				if(product.equals("Andersen")){
 				resetImplicitTimeout(20);
-				flag = findElementByXpath(practiceVideo_xpath).isDisplayed();
+				flag = waitAndLocateElementByXpath(practiceVideo_xpath).isDisplayed();
 				}
 				else
-					if(LoginPage.product.equals("Gulati"))
+					if(product.equals("Gulati"))
 					{
 						resetImplicitTimeout(20);
-						flag = findElementByXpath(btn_checkmywork_xpath).isDisplayed();
+						flag = waitAndLocateElementByXpath(btn_checkmywork_xpath).isDisplayed();
 					}
 				switchToDefaultContent();
 			}
@@ -56,20 +61,20 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	}
 	
 	public boolean isInlineSimpleAssessmentLaunched() {
-		
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		try{
 		switchToFrame(findElementByCssPath(ereader_frame_css));
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
-		if(LoginPage.product.equals("Anderson")){
+		if(product.equals("Andersen")){
 			resetImplicitTimeout(20);
-			flag = findElementByXpath(practiceVideo_xpath).isDisplayed();
+			flag = waitAndLocateElementByXpath(practiceVideo_xpath).isDisplayed();
 			}
 			else
-				if(LoginPage.product.equals("Gulati"))
+				if(product.equals("Gulati"))
 				{
 					resetImplicitTimeout(20);
-					flag = findElementByXpath(btn_checkmywork_xpath).isDisplayed();
+					flag = waitAndLocateElementByXpath(btn_checkmywork_xpath).isDisplayed();
 				}
 		switchToDefaultContent();
 		}
@@ -89,14 +94,15 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	}
 
 	public void selectOption() {
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		logMessage("Select answer option");
 		switchToFrame(findElementByCssPath(grove_frame_css));
 		switchToFrame(findElementById(frame2_Submit_id));
-		if(LoginPage.product.equals("Anderson")){
+		if(product.equals("Andersen")){
 			findElementByXpath(answer_optionAnd_xpath).click();
 			}
 			else
-				if(LoginPage.product.equals("Gulati"))
+				if(product.equals("Gulati"))
 				{
 					findElementByXpath(answer_optionGul_xpath).click();
 				}
@@ -105,15 +111,16 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	}
 	
 	public void selectOptionInline() {
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		logMessage("Select answer option");
 		switchToFrame(findElementByCssPath(ereader_frame_css));
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
-		if(LoginPage.product.equals("Anderson")){
+		if(product.equals("Andersen")){
 			findElementByXpath(answer_optionAnd_xpath).click();
 			}
 			else
-				if(LoginPage.product.equals("Gulati"))
+				if(product.equals("Gulati"))
 				{
 					findElementByXpath(answer_optionGul_xpath).click();
 				}

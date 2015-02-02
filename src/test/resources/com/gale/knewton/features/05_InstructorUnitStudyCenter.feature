@@ -4,13 +4,13 @@ Feature: Access Unit Study Center and verify error message as Instructor
   When I log in to MindTap course,
   I should be able to access Unit Study Center of any one chapter from LPN and verify error message.
 
-   @InstAccessLaunchUSC @SmokeAnderson @SmokeGulati
+   @InstAccessLaunchUSC @SmokeAnderson
    Scenario: Access Unit Study Center on LPN as Instructor
      Given I should be on instructor's LPN page
      When I navigate to a chapter from LPN
      Then Unit Exam Center link should be present
      
- @InstAccessLaunchUSC @SmokeAnderson @SmokeGulati  
+ @InstAccessLaunchUSC  @SmokeAnderson
   Scenario Outline: Launch USC as Instructor and verify error message
      Given I should be on chapter LPN
      When I click on USC link

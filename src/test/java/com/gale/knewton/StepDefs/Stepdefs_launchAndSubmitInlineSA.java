@@ -4,9 +4,10 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.EbookDocumentPage;
-import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SimpleAssessmentActivityPage;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -19,6 +20,7 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	private MindTapLPNPage mindtaplpn;
 		
 	private boolean flag;
+	private String product;
 	
 		
 	@When("^I click start for the linked inline Simple Assessment activity$")
@@ -58,9 +60,10 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	
 	@Then("^Feedback section and Try Another button is displayed$")
 	public void feedback_section_and_try_another_button_is_displayed(){
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		Assert.assertTrue("Feedback is not displayed",simpleAssessmentActivityPage.isInlineFeedbackDisplayed());
 		logPassMessage("Feedback is displayed");
-		if(LoginPage.product.equals("Anderson")){
+		if(product.equals("Andersen")){
 		Assert.assertTrue("Try Another Version button is not displayed",
 				simpleAssessmentActivityPage.isInlineTryAnotherVersionbtnDisplayed());
 		logPassMessage("Try Another Version button is displayed");

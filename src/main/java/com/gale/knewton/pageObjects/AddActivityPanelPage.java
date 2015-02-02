@@ -1,6 +1,8 @@
 package com.gale.knewton.pageObjects;
 
 import com.gale.knewton.base.BaseWebComponent;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 
 public class AddActivityPanelPage extends BaseWebComponent {
@@ -21,6 +23,8 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	private String btn_publish_xpath = "//button[contains(text(),'Publish')]";
 	private String btn_cancelOnList_xpath = "(//*[contains(text(),'Cancel')])[1]";
 	private String btn_cancelOnActivity_xpath = "(//*[contains(text(),'Cancel')])[2]";
+	
+	private String product;
 
 	public void selectAssessment() {
 		resetImplicitTimeout(10);
@@ -61,11 +65,12 @@ public class AddActivityPanelPage extends BaseWebComponent {
 	}
 
 	public void expandAndSelectRadioForSimpleAssess() {
+		product = PropFileHandler.readProperty("Product", YamlReader.getYamlValue("propertyfilepath"));
 		findElementByXpath( btn_toggle_xpath).click();
-		if(LoginPage.product.equals("Anderson"))
+		if(product.equals("Andersen"))
 		findElementByXpath(btn_radioBtnPractice_xpath).click();
 		else
-			if(LoginPage.product.equals("Gulati"))
+			if(product.equals("Gulati"))
 				findElementByXpath(btn_radioBtnQuiz_xpath).click();				
 	}
 	

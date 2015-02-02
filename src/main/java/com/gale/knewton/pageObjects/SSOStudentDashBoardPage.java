@@ -19,8 +19,11 @@ private String courseKey;
 private boolean flag = true;
 
 private String link_open_xpath="//a[contains(@href,'${courseKey}')]";
+private String lbl_title_xpath = link_open_xpath+"/ancestor::div[1]/span";
 	
 	public boolean isUserOnDashboardPage(){
+		if (driver.getTitle().equals("CengageBrain - My Home"))
+			PropFileHandler.writeToFile("CurrentLogin", "Student", YamlReader.getYamlValue("propertyfilepath"));
 		return findElementByXpath(label_sign_Out_xpath).isDisplayed();
 	}
 	
@@ -61,6 +64,14 @@ private String link_open_xpath="//a[contains(@href,'${courseKey}')]";
 
 	public void clickOpen() {
 		courseKey = PropFileHandler.readProperty("CourseKey", YamlReader.getData("propertyfilepath"));
+		String courseTitle = findElementByXpath(getLocator(lbl_title_xpath, courseKey)).getText();
+		if (courseTitle.contains("Andersen"))
+			PropFileHandler.writeToFile("Product", "Andersen", YamlReader.getYamlValue("propertyfilepath"));
+		else if(courseTitle.contains("Gulati"))
+			PropFileHandler.writeToFile("Product", "Gulati", YamlReader.getYamlValue("propertyfilepath"));
+		else{
+			logWarningMessage("Incorrect Title");
+		}
 		waitAndLocateElementByXpath(getLocator(link_open_xpath, courseKey)).click();
 	}
 	

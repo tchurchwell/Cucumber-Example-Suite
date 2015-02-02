@@ -18,6 +18,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -55,10 +56,11 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 			if (browser.equalsIgnoreCase("firefox")) {
 				return getFirefoxDriver();
 			} else if (browser.equalsIgnoreCase("chrome")) {
-				return getChromeDriver(YamlReader.getYamlValue("driverpath"));
+				return getChromeDriver(YamlReader.getYamlValue("chromeDriverPath"));
 			}else if(browser.equalsIgnoreCase("safari")){
 				return getSafariDriver();
-			}
+			}else if(browser.equalsIgnoreCase("IE"))
+				return getIEDriver(YamlReader.getYamlValue("IEDriverPath"));
 		}
 		if (server.equalsIgnoreCase("remote")) {
 			return setRemoteDriver();
@@ -97,6 +99,13 @@ public class Stepdefs_baseTest extends BaseWebComponent {
 		System.setProperty("webdriver.chrome.driver", driverpath);
 		capabilities.setJavascriptEnabled(true);
 		return new ChromeDriver(capabilities);
+	}
+	
+	private static WebDriver getIEDriver(String driverpath) {
+		System.setProperty("webdriver.ie.driver", driverpath);
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability("ignoreZoomSetting", true);
+		return new InternetExplorerDriver(capabilities);
 	}
 	
 	private static WebDriver getSafariDriver(){
