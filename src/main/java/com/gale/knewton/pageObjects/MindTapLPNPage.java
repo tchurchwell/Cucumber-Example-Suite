@@ -38,6 +38,8 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String link_USCactivity_xpath = "//a[contains(text(),'Study Center')]";
 	private String lbl_USCchapter_class = "lpn_title";
 	
+	private String icon_ProgressApp_Id = "app_gradebook_student";
+	
 	private String product;
 	
 	
@@ -111,7 +113,9 @@ public void collapseLPNFolders(){
 			hardWait(1);
 			findElementByXpath(img_firstUnit_xpath).click();
 			hardWait(2);
+			logMessage("Navigate to ebook");
 			findElementByXpath(div_thumbar_xpath).click();
+			logMessage("clicked");
 		}
 		else
 			if(product.equals("Gulati")){
@@ -240,6 +244,10 @@ public void collapseLPNFolders(){
 		PropFileHandler.writeToFile("USCchapter", usc, YamlReader.getYamlValue("propertyfilepath"));
 		hardWait(1);
 		findElementByXpath(link_USCactivity_xpath).click();
+	}
+	
+	public void clickProgressApp(){
+		findElementById(icon_ProgressApp_Id).click();
 	}
 
 }
