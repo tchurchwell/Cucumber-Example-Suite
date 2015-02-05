@@ -5,6 +5,7 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
+
 import cucumber.api.java.en.Then;
 
 public class Stepdefs_studentTakesDistinctSA extends BaseWebComponent {

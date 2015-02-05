@@ -37,7 +37,6 @@ public class CreateCoursePage extends BaseWebComponent {
 		findElementByXpath(inp_courseName_xpath).sendKeys(courseName);
 		findElementByXpath(inp_beginDate_xpath).sendKeys(getCurrentDate());
 		findElementByXpath(inp_endDate_xpath).sendKeys(getNextMonthDate());
-		PropFileHandler.writeToFile("CourseEndDate", getNextMonthDate(), YamlReader.getYamlValue("propertyfilepath"));
 		Select dropdown = new Select(findElementByXpath(dropdown_timeZone_xpath));
 		dropdown.selectByValue(timeZone);
 	}

@@ -5,7 +5,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
   I should be able to login successfully on SSO dashboard and logout successfully
   and able to Create, Enroll and Launch course
 
-  @LoginAsInstructor @LoginAnderson @SmokeAnderson
+  @LoginAsInstructor @LoginAnderson @SmokeAndersen
   Scenario Outline: I want to login as an instructor on providing valid credentials 
     Given I am on the Cengage Learning Login Page to login as instructor
     When I provide instructor username as <username> and password as <password> and hit login button
@@ -28,7 +28,7 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
  	| knewton_inst06@qai.com | A123456  |
  		
  
- @CreateCourse @LogincreateLaunch @SmokeAnderson @SmokeGulati
+ @CreateCourse @LogincreateLaunch @SmokeAndersen @SmokeGulati
  Scenario: I want to create a new course
  	Given I am on the Cengage Learning instructor's sso dashboard
  	When I click Create Course hyperlink and navigate to create course page
@@ -38,13 +38,13 @@ Feature: Login/Logout to SSO, Create, Enroll and Launch course
 	Then course should be created
 	And we save the course info and navigate to dashboard
 
- @LaunchCourse @LogincreateLaunch @LoginLaunch @SmokeAnderson @SmokeGulati
+ @LaunchCourse @LogincreateLaunch @LoginLaunch @SmokeAndersen @SmokeGulati
  Scenario: I want to launch the course from instructor's dashboard
 	Given I am on the Cengage Learning instructor's sso dashboard
  	When I click newly created course
  	Then I am on the MindTap window
 	 
- @AcceptEulaIfAppears @LogincreateLaunch @SmokeAnderson @SmokeGulati
+ @AcceptEulaIfAppears @LogincreateLaunch @SmokeAndersen @SmokeGulati
  Scenario: I want to accept EULA page for the newly created course
  	Given I am on the MindTap window
  	When verify presence of Eula and accept EULA if present

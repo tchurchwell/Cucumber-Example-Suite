@@ -6,7 +6,7 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
   and also be able to Enroll and Launch courses from the dashboard
 
 
- @LoginStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson 
+ @LoginStudent  @LoginEnrollAndAcceptEula @SmokeAndersen 
  Scenario Outline: I want to login successfully as a student on providing valid credentials
     Given I am on the Cengage Learning Login Page to login as student
     When I provide student username as <username> and password as <password> and hit login button
@@ -17,7 +17,7 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
  	| username            | password |
  	| knewton_automation_stu04@qai.com | A123456  |
  	
- @SmokeGulati
+ @SmokeGulati @StudentLoginAndLaunchCourse
  Scenario Outline: I want to login successfully as a student on providing valid credentials
     Given I am on the Cengage Learning Login Page to login as student
     When I provide student username as <username> and password as <password> and hit login button
@@ -28,14 +28,14 @@ Feature: Login/Logout to SSO as student, Enroll and Launch course
  	| username            | password |
  	| knewton_automation_stu05@qai.com | A123456  |
 
- @EnrollCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
+ @EnrollCourse @LoginEnrollAndAcceptEula @SmokeAndersen @SmokeGulati
  Scenario: I want to enroll into a course successfully
  	Given I am on the Cengage Learning student's sso dashboard
  	When I enter Course Key and click Register
  	And confirm the course on Confirm Course Information page
  	Then I should be able to see the Course on dashboard under My Courses & Materials
  
- @LaunchCourseAsStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAnderson @SmokeGulati
+ @LaunchCourseAsStudent @StudentLoginAndLaunchCourse @LoginEnrollAndAcceptEula @SmokeAndersen @SmokeGulati
  Scenario: I want to launch course successfully
  	Given I am on the Cengage Learning student's sso dashboard
  	When I open the course and click launch

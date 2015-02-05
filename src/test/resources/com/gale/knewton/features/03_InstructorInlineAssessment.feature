@@ -4,7 +4,7 @@ Feature: instructor access Inline Assessment, link it on Ebook and Preview it
   When I log in to MindTap course,
   I land on MindTap LP for course, access inline Assessment on Ebook, create activity, link and preview it
 
- @AccessinlineSAAndlinkToEBook @SmokeAnderson @SmokeGulati
+ @AccessinlineSAAndlinkToEBook @SmokeAndersen @SmokeGulati
  Scenario: I want to access Inline Assessment and link as inline activity
  	Given I should be on instructor's LPN page
  	And I Navigate to the First Ebook Document
@@ -16,14 +16,14 @@ Feature: instructor access Inline Assessment, link it on Ebook and Preview it
 	And I save inline Simple Assessment activity with default options
 	Then verify created Simple Assessment activity should linked to the Ebook Document
 	
- @InstLaunchInlineSA @LaunchSubmitInlineSA @SmokeAnderson @SmokeGulati
+ @InstLaunchInlineSA @LaunchSubmitInlineSA @SmokeAndersen @SmokeGulati
  Scenario: Instructor launches inline Simple Assessment distinct activity
  	Given I should be on instructor's LPN page
  	And I Navigate to the First Ebook Document
  	When I click start for the linked inline Simple Assessment activity
  	Then I am on inline Simple Assessment activity page
  	
- @InstSubmitInlineSA @LaunchSubmitInlineSA @SmokeAnderson @SmokeGulati
+ @InstSubmitInlineSA @LaunchSubmitInlineSA @SmokeAndersen @SmokeGulati
  Scenario: Instructor submits inline Simple Assessment distinct activity
  	Given I should be on inline Simple Assessment activity page
  	When I click Start Activity and submit answer for a Question

@@ -11,11 +11,13 @@ public class UscActivityPage extends BaseWebComponent{
 		return findElementByXpath(lbl_USCheading_xpath).isDisplayed();
 	}
 	
+	
 	public void closeUSCActivity(){
 		hardWait(1);
 		logMessage("Click close icon");
 		fireOnClickJsEvent(btn_closeIcon_class);
 		switchToDefaultContent();	
 	}
+	
 	
 }

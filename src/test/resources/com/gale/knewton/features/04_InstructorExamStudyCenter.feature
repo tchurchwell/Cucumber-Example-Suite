@@ -4,16 +4,16 @@ Feature: Instructor access Exam Study Center, verify its linking on LPN and Prev
   When I log in to MindTap course,
   I should be able to access Exam Study Center verify its linking on LPN and preview it.
 
-   @AccessESCandLinkToLPN @SmokeAnderson
+   @AccessESCandLinkToLPN @SmokeAndersen @SmokeGulati
  Scenario: Access Exam Study Center Configurations page
 	 Given I am on Add Activity List
 	 When I click Exam Study Center from Activities list
 	 Then I am on Exam Study Center configuration page
-	 And Default Exam Target Due Date is same as course end date in MM/DD/YYY format 
+	 And Default Exam Target Due Date is displayed as mm/dd/yyyy 
 	 When I save ESC activity after completing required details on Config page and following MindTap Description page
 	 Then created ESC should be linked to LPN
 	 
-	@InstLaunchESC @SmokeAnderson
+	@InstLaunchESC @SmokeAndersen 
   Scenario Outline: Launch ESC Activity as Instructor
  	Given I should be on instructor's LPN page
  	When I click the already linked ESC activity

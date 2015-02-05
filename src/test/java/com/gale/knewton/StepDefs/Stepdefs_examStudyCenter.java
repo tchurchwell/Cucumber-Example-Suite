@@ -36,7 +36,8 @@ public class Stepdefs_examStudyCenter extends BaseWebComponent {
 	
 	@When("^I save ESC activity after completing required details on Config page and following MindTap Description page$")
 	public void i_enter_required_details_and_following_MindTap_Description_page_and_save() throws IOException {
-	    escConfigPage.selectChapterCheckbox();
+		escConfigPage.enterExamDueDate();
+		escConfigPage.selectChapterCheckbox();
 	    escConfigPage.clickSave();
 	    
 	    mindTapDescPage = new MindTapDescriptionPage();
@@ -53,10 +54,10 @@ public class Stepdefs_examStudyCenter extends BaseWebComponent {
 		logPassMessage("ESC Activity is verified on LPN as distinct activity");
 	}
 	
-	 @And("^Default Exam Target Due Date is same as course end date in MM/DD/YYY format$")
+	 @And("^Default Exam Target Due Date is displayed as mm/dd/yyyy$")
 		public void default_exam_target_due_date() {
-		 Assert.assertTrue("ESC due date is not same as course end date",escConfigPage.verifyExamDueDate());
-			logPassMessage("ESC due date is same as course end date");
+		 Assert.assertEquals("Default ESC due date is not mm/dd/yyyy","mm/dd/yyyy",escConfigPage.getExamDueDate());
+			logPassMessage("Default ESC due date is mm/dd/yyyy");
 	 }
 	
 }

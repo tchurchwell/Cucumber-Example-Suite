@@ -4,9 +4,9 @@ import org.junit.Assert;
 
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.CreateCoursePage;
+import com.gale.knewton.pageObjects.EulaPage;
 import com.gale.knewton.pageObjects.LoginPage;
 import com.gale.knewton.pageObjects.MindTapDashboardPage;
-import com.gale.knewton.pageObjects.EulaPage;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.SSOInstructorDashboardPage;
 import com.gale.knewton.util.PropFileHandler;

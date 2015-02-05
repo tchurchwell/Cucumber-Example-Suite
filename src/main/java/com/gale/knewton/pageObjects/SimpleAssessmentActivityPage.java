@@ -23,6 +23,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String answer_optionGul_xpath = "(//*[@class='ci-choices']//input)[1]";
 	private String lbl_submit_xpath = "//button[text()='Review & Submit']";
 	private String btn_submit_xpath = "//button[contains(.,'Grade Assignment Now')]";
+	private String icon_close_class = "closeActivity";
 	
 	private String product;
 	private boolean flag = false;
@@ -140,13 +141,16 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
 		logMessage("Click Check My Work Button");
+		scrollDown(findElementByXpath(btn_checkmywork_xpath));
 		findElementByXpath(btn_checkmywork_xpath).click();
 		switchToDefaultContent();
 	}
 	
 	public boolean isFeedbackDisplayed(){
 		boolean flag;
+		hardWait(1);
 		switchToFrame(findElementByCssPath(grove_frame_css));
+		hardWait(1);
 		switchToFrame(findElementById(frame2_Submit_id));
 		flag = findElementByXpath(feedback_xpath).isDisplayed();
 		switchToDefaultContent();
@@ -231,6 +235,10 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 			switchToFrame(findElementById(frame3inline_Submit_id));
 			findElementByXpath(btn_submit_xpath).click();
 			switchToDefaultContent();
+	}
+	
+	public void closeSAActivity(){
+		findElementByClass(icon_close_class).click();
 	}
 	
 

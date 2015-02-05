@@ -4,14 +4,14 @@ Feature: Student takes Inline Activity - Simple Assessment Activity
   When I log in to MindTap course,
   I can take - launch and submit inline Simple Assessment activity
 
- @StudLaunchInlineSA @StuLaunchSubmitInline @SmokeAnderson @SmokeGulati
+ @StudLaunchInlineSA @StuLaunchSubmitInline @SmokeAndersen @SmokeGulati
  Scenario: Student launches inline Simple Assessment distinct activity
  	Given I should be on Student's LPN page
  	And I Navigate to the First Ebook Document
  	When I click start for the linked inline Simple Assessment activity
  	Then I am on inline Simple Assessment activity page
  	
- @StudSubmitInlineSA @StuLaunchSubmitInline @SmokeAnderson @SmokeGulati
+ @StudSubmitInlineSA @StuLaunchSubmitInline @SmokeAndersen @SmokeGulati
  Scenario: Student submits inline Simple Assessment distinct activity
  	Given I should be on inline Simple Assessment activity page
  	When I click Start Activity and submit answer for a Question

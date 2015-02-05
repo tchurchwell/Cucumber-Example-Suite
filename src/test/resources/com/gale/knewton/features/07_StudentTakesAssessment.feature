@@ -4,20 +4,20 @@ As a Student
 When I Login as Student
 I should be able to launch and Submit Assessment activity from LPN
 
-@StudLaunchSAdistinct @StuLaunchSubmitDistnct @SmokeGulati @SmokeAnderson
+@StudLaunchSAdistinct @StuLaunchSubmitDistnct @SmokeGulati @SmokeAndersen
 Scenario: Launch Simple Assessment distinct activity as student
 	Given I should be on Student's LPN page
 	When I click the already linked Simple Assessment activity
 	Then I am on Simple Assessment activity page
 
-@StudSubmitSADistinct @StuLaunchSubmitDistnct @SmokeGulati @SmokeAnderson
+@StudSubmitSADistinct @StuLaunchSubmitDistnct @SmokeGulati @SmokeAndersen
 Scenario: Submit Simple Assessment distinct activity as student
  	Given I should be on Simple Assessment activity page
  	When I launch Activity and answer one Question
  	And I click on Check My Work button
  	And I submit Simple Assessment activity
 	Then I am on Student's LPN page
-	
+		
 @StudLaunchSAA @SmokeGulati @StuLaunchSubmitSAA
 Scenario: Launch SAA distinct activity as Student
 	Given I should be on Student's LPN page
@@ -31,3 +31,4 @@ Scenario: Submit Simple Assessment distinct activity as Student
  	And I answer first question
  	And I submit SAA distinct activity
 	Then I am on Student's LPN page
+	

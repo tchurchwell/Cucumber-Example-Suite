@@ -30,6 +30,8 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String icon_announcementNotice_xpath = "//div[contains(@class,'announcement')]/div/a[contains(@class,'nb_closeIcon')]";
 
 	private String link_activityName_xpath = "//a[contains(.,'${activitytitle}')]";
+	private String icon_activityStatus_xpath = link_activityName_xpath+"/span[2]";
+	private String img_lpnScore_xpath = link_activityName_xpath+"/following::div[3]";
 	private String activityDynamicXpath;
 	
 	private String link_ESCactivity_xpath = "//a[contains(.,'${activitytitle}')]";
@@ -81,6 +83,7 @@ public void collapseLPNFolders(){
 			hardWait(1);
 			findElementById(btn_enter_id).click();
 			findElementByCssPath(btn_closeOverlay_css).click();
+			logPassMessage("Splash Screen closed successfully");
 			}
 		catch (Exception e){
 			System.out.println("*******Exception"+e);
@@ -248,6 +251,21 @@ public void collapseLPNFolders(){
 	
 	public void clickProgressApp(){
 		findElementById(icon_ProgressApp_Id).click();
+	}
+	
+	public boolean isDistinctSAattempted(){
+		activityDynamicXpath = getLocator(icon_activityStatus_xpath,
+				PropFileHandler.readProperty("SimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		hardWait(1);
+		return findElementByXpath(activityDynamicXpath).getText().equals("Submitted");
+		}
+	
+	public String getDistinctSimpleAssessmentLpnScore(){
+		activityDynamicXpath = getLocator(img_lpnScore_xpath,
+				PropFileHandler.readProperty("SimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		String score = findElementByXpath(activityDynamicXpath).getText();
+		score = score.split(":")[1].substring(1);
+		return score;
 	}
 
 }

@@ -7,7 +7,7 @@ Verify the scores of attempted activities,
 Review the previous takes of attempted activities,
 and can view mastery report of ESC/USC
 
-@StuLaunchesProgressApp
+@StuLaunchesProgressApp @SmokeAnderson @SmokeGulati
 Scenario: Student launches the Progress App
 Given I should be on Student's LPN page
 When I click on progress app icon from App dock
