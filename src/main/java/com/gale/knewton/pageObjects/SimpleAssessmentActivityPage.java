@@ -18,7 +18,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String ereader_frame_css = "iframe[title='Reader App']";
 	private String frame2inline_Submit_class = "appFrame";
 	private String frame3inline_Submit_id ="easyXDM_activityService_cxp_Target_provider";
-		private String btn_startActivitySA_css= "#rhs-start";
+	private String btn_startActivitySA_css= "#rhs-start";
 	private String answer_optionAnd_xpath = "(//*[@class='q4-choice']//input)[1]";
 	private String answer_optionGul_xpath = "(//*[@class='ci-choices']//input)[1]";
 	private String lbl_submit_xpath = "//button[text()='Review & Submit']";
@@ -229,17 +229,15 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	}
 	
 	public void GradeAssignmentButton(){
-			logMessage("Click on Grade Assignment Button");
-			switchToFrame(findElementByCssPath(ereader_frame_css));
-			switchToFrame(findElementByClass(frame2inline_Submit_class));
-			switchToFrame(findElementById(frame3inline_Submit_id));
-			findElementByXpath(btn_submit_xpath).click();
-			switchToDefaultContent();
+		logMessage("Click on Grade Assignment Button");
+		switchToFrame(findElementByCssPath(ereader_frame_css));
+		switchToFrame(findElementByClass(frame2inline_Submit_class));
+		switchToFrame(findElementById(frame3inline_Submit_id));
+		findElementByXpath(btn_submit_xpath).click();
+		switchToDefaultContent();
 	}
 	
 	public void closeSAActivity(){
 		findElementByClass(icon_close_class).click();
 	}
-	
-
 }

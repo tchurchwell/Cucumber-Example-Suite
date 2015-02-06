@@ -16,3 +16,25 @@ Scenario: Student review the previous take of Simple Assessment distinct activit
 	And Review button is displayed
 	When I click on Review button
 	Then Attempted Simple Assessment activity is displayed
+	
+@StuReviewsSAA
+Scenario: Student review the previous take of SAA activity
+	Given I should be on Student's LPN page
+	And Attempted SAA activity is present on LPN
+	When I click on attempted SAA activity
+	Then I am on Assessment Activity Information page
+	And Recorded Score is displayed same as score on LPN's activity link
+	And Review button is displayed
+	When I click on Review button
+	Then Attempted SAA activity is displayed 
+	
+	@StuReviewsInlineSA
+Scenario: Student review the previous take of Inline Simple Assessment activity
+	Given I should be on chapter LPN
+	And Attempted Inline Simple Assessment activity is present on LPN
+	When I click on attempted Inline Simple Assessment activity
+	Then I am on Assessment Activity Information page
+	And Recorded Score is displayed same as score on LPN's activity link
+	And Review button is displayed
+	When I click on Review button
+	Then Attempted Inline Simple Assessment activity is displayed 

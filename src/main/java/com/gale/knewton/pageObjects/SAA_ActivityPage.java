@@ -12,12 +12,14 @@ public class SAA_ActivityPage extends BaseWebComponent {
 	private String radio_answer_xpath = "//input[@class='ci-input' and @value='2']";
 	private String icon_Cross_xpath = radio_answer_xpath+"/ancestor::div[1]/span[2]/span";
 	private String lbl_Feedback_css = ".ci-feedback-title";
+	private String lbl_feedbackAnswer_css = ".ci-show-answer.ci-feedback";
 	private String btn_SubmitAnswer_xpath = "//div[text()='Submit Answer']";
 	private String lbl_Submit_xpath = ".//*[@id='submit']/div";
 	private String btn_Submit_id = "rhs-finalsubmit";
 	private String lbl_scoreIndicator_css = ".scoreIndicator";
 	private String lbl_CurrentPoints_id = "lhs-current-points";
 	private String lbl_PossiblePoints_id = "lhs-possible-score";
+	private String icon_close_class = "closeActivity";
 	
 	public boolean isSAA_OverviewTabDisplayed() {
 		try
@@ -35,6 +37,17 @@ public class SAA_ActivityPage extends BaseWebComponent {
 			flag = false;
 			}
 	return flag;
+	}
+	
+	public boolean isAttemptedSAADisplayed(){
+		boolean fl = false;
+		hardWait(1);
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		hardWait(1);
+		switchToFrame(findElementById(frame2_Submit_id));
+		fl = findElementByCssPath(lbl_feedbackAnswer_css).isDisplayed();
+		switchToDefaultContent();
+		return fl;
 	}
 	
 	
@@ -112,5 +125,8 @@ public class SAA_ActivityPage extends BaseWebComponent {
 		refresh();
 		switchToDefaultContent();
 	}
-
+	
+	public void closeSAAactivity(){
+		findElementByClass(icon_close_class).click();
+	}
 }
