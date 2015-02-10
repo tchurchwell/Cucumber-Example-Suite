@@ -17,6 +17,7 @@ Scenario: Submit Simple Assessment distinct activity as student
  	And I click on Check My Work button
  	And I submit Simple Assessment activity
 	Then I am on Student's LPN page
+	And LPN score is displayed on Simple Assessment activity link
 		
 @StudLaunchSAA @SmokeGulati @StuLaunchSubmitSAA
 Scenario: Launch SAA distinct activity as Student
@@ -31,4 +32,5 @@ Scenario: Submit Simple Assessment distinct activity as Student
  	And I answer first question
  	And I submit SAA distinct activity
 	Then I am on Student's LPN page
+	And LPN score is displayed on SAA activity link
 	

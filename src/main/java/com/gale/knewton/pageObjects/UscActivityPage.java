@@ -6,11 +6,11 @@ public class UscActivityPage extends BaseWebComponent{
 	
 	private String lbl_USCheading_xpath = ".//div[@class='nb_actTitle nb_math' and contains(text(),'Study Center')]";
 	private String btn_closeIcon_class = "closeActivity";
-	
+
+
 	public boolean isUSCactivityDisplayed(){
 		return findElementByXpath(lbl_USCheading_xpath).isDisplayed();
 	}
-	
 	
 	public void closeUSCActivity(){
 		hardWait(1);
@@ -18,6 +18,5 @@ public class UscActivityPage extends BaseWebComponent{
 		fireOnClickJsEvent(btn_closeIcon_class);
 		switchToDefaultContent();	
 	}
-	
 	
 }

@@ -9,6 +9,7 @@ public class ProgressApp extends BaseWebComponent {
 	private String lbl_MyGrade_xpath = "//*[@class='nav nav-tabs']/li[1]/a";
 	private String lbl_MasteryReport_xpath = "//*[@class='nav nav-tabs']/li[2]/a";
 	private String icon_CloseProgressApp_class = "hideApp";
+
 	
 	public boolean verifyMyGradeAsDefaultTab(){
 		boolean flag;
@@ -35,7 +36,7 @@ public class ProgressApp extends BaseWebComponent {
 		switchToDefaultContent();
 		return flag;
 	}
-	
+
 	public void closeProgressApp(){
 		 findElementByClass(icon_CloseProgressApp_class).click();
 	}

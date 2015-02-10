@@ -1,6 +1,9 @@
 package com.gale.knewton.pageObjects;
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.util.PropFileHandler;
 import com.gale.knewton.util.YamlReader;
@@ -14,7 +17,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	private String tryAnotherVersion_xpath = "//input[@value='Try Another Version']";
 	private String btn_checkmywork_xpath= "//input[contains(@value,'Check My Work')]";
 	private String grove_frame_css ="iframe[title='Assessments App']";
-	private String frame2_Submit_id ="easyXDM_activityService_cxp_Target_provider";
+	private String frame2_Submit_id ="easyXDM_activityService_cxp_Target_provider"; 
 	private String ereader_frame_css = "iframe[title='Reader App']";
 	private String frame2inline_Submit_class = "appFrame";
 	private String frame3inline_Submit_id ="easyXDM_activityService_cxp_Target_provider";
@@ -150,7 +153,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		boolean flag;
 		hardWait(1);
 		switchToFrame(findElementByCssPath(grove_frame_css));
-		hardWait(1);
+		hardWait(3);
 		switchToFrame(findElementById(frame2_Submit_id));
 		flag = findElementByXpath(feedback_xpath).isDisplayed();
 		switchToDefaultContent();
@@ -228,13 +231,22 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 				return false;
 	}
 	
-	public void GradeAssignmentButton(){
+	public void gradeAssignmentButton(){
 		logMessage("Click on Grade Assignment Button");
 		switchToFrame(findElementByCssPath(ereader_frame_css));
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
 		findElementByXpath(btn_submit_xpath).click();
 		switchToDefaultContent();
+	}
+	
+	public boolean isAttemptedFeedbackDisplayed(){
+		hardWait(1);
+		switchToFrame(findElementByCssPath(grove_frame_css));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id(frame2_Submit_id)));
+		flag = findElementByXpath(feedback_xpath).isDisplayed();
+		switchToDefaultContent();
+		return flag;
 	}
 	
 	public void closeSAActivity(){

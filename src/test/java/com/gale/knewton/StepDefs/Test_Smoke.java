@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(features="src/test/resources/com/gale/knewton/features",
 tags={"@SmokeGulati"},
 format = {"pretty","html:target/cucumber","json:target/cucumber.json"})
- 
+    
 
 public class Test_Smoke {
 	@BeforeClass

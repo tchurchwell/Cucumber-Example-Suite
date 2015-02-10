@@ -33,14 +33,17 @@ public class MindTapLPNPage extends BaseWebComponent {
 	private String icon_SimpleAssessmentActivityStatus_xpath = link_activityName_xpath+"/span[2]";
 	private String img_SimpleAssessmentlpnScore_xpath = link_activityName_xpath+"/following::div[3]";
 	private String link_AttemptedSAA_xpath = "//*[@class='lpn_name' and contains(.,'${activitytitle}')]";
+	private String img_InlineSAlpnScore_xpath = "//a[contains(.,'${activitytitle}')]/../../ul/li/a";
 	private String icon_SAAactivityStatus_xpath = "//*[@class='lpn_name' and contains(.,'${activitytitle}')]/span[2]";
 	private String img_SAAlpnScore_xpath = "//*[@class='lpn_name' and contains(.,'${activitytitle}')]//following::div[3]";
+	private String img_expandInline_xpath = link_activityName_xpath+"/ancestor::div[3]/div[@class='lpn_inlineActivities']/a/img";
+	private String img_InlneSAactivityStatus_xpath = link_activityName_xpath+"/span[2]";
 	private String activityDynamicXpath;
-	
+		
 	private String link_ESCactivity_xpath = "//a[contains(.,'${activitytitle}')]";
 	private String ESCactivitydynamicxpath;
 	
-	private String link_USCactivity_xpath = "//a[contains(text(),'Study Center')]";
+	private String link_USCactivity_xpath = "//a[contains(.,'Study Center')]";
 	private String lbl_USCchapter_class = "lpn_title";
 	
 	private String icon_ProgressApp_Id = "app_gradebook_student";
@@ -240,7 +243,7 @@ public void collapseLPNFolders(){
 	}
 	
 	public boolean isUSCLinkDisplayed(){
-		hardWait(1);
+		hardWait(2);
 		return findElementByXpath(link_USCactivity_xpath).isDisplayed();
 	}
 	
@@ -260,22 +263,29 @@ public void collapseLPNFolders(){
 		activityDynamicXpath = getLocator(icon_SimpleAssessmentActivityStatus_xpath,
 				PropFileHandler.readProperty("SimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
 		hardWait(1);
-		return findElementByXpath(activityDynamicXpath).getText().equals("Submitted");
+		return findElementByXpath(activityDynamicXpath).getText().contains("Submitted");
 		}
 	
 	public boolean isSAAattempted(){
 		activityDynamicXpath = getLocator(icon_SAAactivityStatus_xpath,
 				PropFileHandler.readProperty("saaActivityTitle",(YamlReader.getData("propertyfilepath"))));
 		hardWait(1);
-		return findElementByXpath(activityDynamicXpath).getText().equals("Submitted");
+		return findElementByXpath(activityDynamicXpath).getText().contains("Submitted");
 		}
 	
 	public String getDistinctSimpleAssessmentLpnScore(){
 		activityDynamicXpath = getLocator(img_SimpleAssessmentlpnScore_xpath,
 				PropFileHandler.readProperty("SimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
-		String score = findElementByXpath(activityDynamicXpath).getText();
+		String score = waitAndLocateElementByXpath(activityDynamicXpath).getText();
 		score = score.split(":")[1].substring(1);
 		return score;
+	}
+	
+	public String getInlineSimpleAssessmentLpnScore(){
+		activityDynamicXpath = getLocator(img_InlineSAlpnScore_xpath,
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		return waitAndLocateElementByXpath(activityDynamicXpath).getText();
+		
 	}
 	
 	public String getSAALpnScore(){
@@ -289,6 +299,27 @@ public void collapseLPNFolders(){
 	public void clickAttemptedSAAactivity(){
 		activityDynamicXpath = getLocator(link_AttemptedSAA_xpath,
 				PropFileHandler.readProperty("saaActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		findElementByXpath(activityDynamicXpath).click();
+	}
+	
+	public void clickAttemptedInlineSAactivity(){
+		activityDynamicXpath = getLocator(link_activityName_xpath,
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		findElementByXpath(activityDynamicXpath).click();
+	}
+	
+	public boolean isInlineSAattempted(){
+		expandInlineOnLPN();
+		hardWait(1);
+		activityDynamicXpath = getLocator(img_InlneSAactivityStatus_xpath,
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		return findElementByXpath(activityDynamicXpath).getText().contains("Submitted");
+	}
+	
+	public void expandInlineOnLPN(){
+		activityDynamicXpath = getLocator(img_expandInline_xpath,
+				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
+		hardWait(1);
 		findElementByXpath(activityDynamicXpath).click();
 	}
 

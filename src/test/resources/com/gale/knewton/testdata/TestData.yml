@@ -1,10 +1,10 @@
 baseurl: https://s-login.cengage.com/cb/login.htm
-browser: chrome
+browser: firefox
 chromeDriverPath: "src/test/resources/com/gale/knewton/drivers/chromedriver.exe"
 IEDriverPath: "src/test/resources/com/gale/knewton/drivers/IEDriverServer.exe"
 seleniumserver: local
 remoteURL: http://172.16.3.173:4444
-explicitTimeOut: 40
+explicitTimeOut: 10
 Environment: qaf
 debug:
   pageObjects: yes

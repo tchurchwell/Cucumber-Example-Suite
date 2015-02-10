@@ -14,7 +14,7 @@ public class EbookDocumentPage extends BaseWebComponent{
 	private String lnk_editMode_xpath = "//a[@title='Edit mode']";
 	private String lnk_addInlineActivity_xpath = "//div[@id='ebook_document']/div[1]/div[2]/div[1]/a";
 	private String btn_start_xpath = "//div[contains(text(),'${inlineActivitytitle}')]/preceding-sibling::a[2]";
-	
+		
 	private String link_inlineActivityName_xpath = "//div[@class='nb_thumbTitle' and contains(.,'${activitytitle}')]";
 
 	boolean flag = false;

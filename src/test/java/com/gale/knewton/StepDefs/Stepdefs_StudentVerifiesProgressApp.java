@@ -41,5 +41,6 @@ public class Stepdefs_studentVerifiesProgressApp extends BaseWebComponent {
       mindTapLpn.clickProgressApp();
 	  Assert.assertTrue("Student's progress app not displayed", progressApp.isStudentProgressAppDisplayed());
 	  logPassMessage("Student's progress app displayed successfully");	    
-	}
+	}	
+	
 }

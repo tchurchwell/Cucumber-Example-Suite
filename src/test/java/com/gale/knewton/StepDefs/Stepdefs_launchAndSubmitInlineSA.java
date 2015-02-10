@@ -73,7 +73,7 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 	@And("^I submit inline Simple Assessment activity$")
 	public void i_submit_inline_Simple_Assessment_activity() throws Throwable {
 		simpleAssessmentActivityPage.clickReviewSubmitInline();
-		simpleAssessmentActivityPage.GradeAssignmentButton();
+		simpleAssessmentActivityPage.gradeAssignmentButton();
 		logPassMessage("Activity submitted Successfully");
 	}
 	
@@ -84,6 +84,8 @@ public class Stepdefs_launchAndSubmitInlineSA extends BaseWebComponent {
 		Assert.assertTrue("Not navigated to Ebook Document Page",ebookDocumentPage.isUserOnEbookDocumentPage());
 		logPassMessage("Successfully navigated to ebook document page");
 		ebookDocumentPage.closeEbook();
+		if(PropFileHandler.readProperty("CurrentLogin", 
+				YamlReader.getData("propertyfilepath")).equalsIgnoreCase("Instructor"))
 		mindtaplpn.navigateToBaseLPN();
 	}
 }

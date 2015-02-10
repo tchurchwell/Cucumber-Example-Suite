@@ -251,7 +251,18 @@ public class BaseWebComponent {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elementUid)));
 	}
 	
-
+	public WebElement waitAndLocateElementByCss(String elementUid){
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(elementUid)));
+	}
+	
+	public WebElement waitAndLocateElementById(String elementUid){
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(elementUid)));
+	}
+	
+	public WebElement waitAndLocateElementByClass(String elementUid){
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(elementUid)));
+	}
+	
 	public String getStandardWaitTime() {
 		return envProperties.getString("STANDARD_PAGE_LOAD_WAIT_TIME");
 	}

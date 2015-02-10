@@ -18,16 +18,16 @@ And My Grades tab is active by default
 @StuVerifiesSAinProgressApp
 Scenario: Student verifies the score of attempted Simple Assessment activity
 Given I should be on Student's progress app
-And correct score is displayed for attempted Simple Assessment activity
+And Correct score is displayed for attempted Simple Assessment activity
 
-
+@StuVerifiesInlineSAinProgressApp
 Scenario: Student verifies the score of attempted Inline Simple Assessment activity
 Given I should be on Student's progress app
-And correct score is displayed for attempted Inline Simple Assessment activity
+And Correct score is displayed for attempted Inline Simple Assessment activity
 
 Scenario: Student verifies the score of attempted SAA activity
 Given I should be on Student's progress app
-And correct score is displayed for attempted SAA activity
+And Correct score is displayed for attempted SAA activity
 
 Scenario: Student review the previous take of a Simple Assessment distinct activity.
 Given I should be on Student's progress app

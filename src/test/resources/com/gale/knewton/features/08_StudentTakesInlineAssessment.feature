@@ -19,3 +19,4 @@ Feature: Student takes Inline Activity - Simple Assessment Activity
  	Then Feedback section and Try Another button is displayed
  	And I submit inline Simple Assessment activity
 	Then I am on Ebook Document Page
+	And LPN score is displayed on Inline Simple Assessment activity link

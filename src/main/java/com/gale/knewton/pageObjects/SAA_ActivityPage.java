@@ -43,7 +43,7 @@ public class SAA_ActivityPage extends BaseWebComponent {
 		boolean fl = false;
 		hardWait(1);
 		switchToFrame(findElementByCssPath(grove_frame_css));
-		hardWait(1);
+		hardWait(3);
 		switchToFrame(findElementById(frame2_Submit_id));
 		fl = findElementByCssPath(lbl_feedbackAnswer_css).isDisplayed();
 		switchToDefaultContent();
