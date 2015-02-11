@@ -4,7 +4,7 @@ Feature: Instructor access Exam Study Center, verify its linking on LPN and Prev
   When I log in to MindTap course,
   I should be able to access Exam Study Center verify its linking on LPN and preview it.
 
-   @AccessESCandLinkToLPN @SmokeAndersen @SmokeGulati
+   @AccessESCandLinkToLPN  @SmokeGulati @SmokeAndersen
  Scenario: Access Exam Study Center Configurations page
 	 Given I am on Add Activity List
 	 When I click Exam Study Center from Activities list
@@ -13,7 +13,7 @@ Feature: Instructor access Exam Study Center, verify its linking on LPN and Prev
 	 When I save ESC activity after completing required details on Config page and following MindTap Description page
 	 Then created ESC should be linked to LPN
 	 
-	@InstLaunchESC @SmokeAndersen 
+	@InstLaunchESC  
   Scenario Outline: Launch ESC Activity as Instructor
  	Given I should be on instructor's LPN page
  	When I click the already linked ESC activity

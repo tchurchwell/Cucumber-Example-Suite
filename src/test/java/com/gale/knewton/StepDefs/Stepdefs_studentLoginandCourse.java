@@ -103,29 +103,4 @@ public class Stepdefs_studentLoginandCourse extends BaseWebComponent {
 		coursePaymentPage = new CoursePaymentPage();
 		coursePaymentPage.clickTakeMeToMyCourse();
 	}
-
-	/*@Then("^I accept Eula if appears and redirected to MindTap LPN page$")
-	public void i_should_be_redirected_to_MindTap_LPN_page() throws Throwable {
-		mindTapLPNPage = new MindTapLPNPage();
-		mindTapEulaPage = new EulaPage();
-		resetImplicitTimeout(10);
-		try {
-			if (mindTapEulaPage.isEulaDisplayed()) {
-				mindTapEulaPage.clickAcceptButton();
-				logPassMessage("Eula page is displayed and accepted for student");
-				mindTapLPNPage.clickEnter();
-				Assert.assertTrue("LPN page is not displayed",
-						mindTapLPNPage.isLPNDisplayedAtStudent());
-				logPassMessage("LPN page is displayed after accepting Eula page");
-			}
-		}catch (Exception e) {
-			mindTapLPNPage.clickEnter();
-			if (mindTapLPNPage.isLPNDisplayedAtStudent()) {
-				logPassMessage("LPN page is displayed directly while launching the course");
-			}
-			else {
-				logWarningMessage("Exception " + e);
-			}
-		}
-	}*/
 }

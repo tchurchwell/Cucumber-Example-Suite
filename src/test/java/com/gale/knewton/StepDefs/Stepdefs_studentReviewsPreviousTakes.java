@@ -136,7 +136,7 @@ public class Stepdefs_studentReviewsPreviousTakes extends BaseWebComponent {
 	public void attempted_inline_simple_assessment_activity_is_displayed() {
 		SAactivity = new SimpleAssessmentActivityPage();
 		ebookReader = new EbookDocumentPage();
-		Assert.assertTrue("Attempted Inline Simple Assessment activity not displayed", SAactivity.isAttemptedFeedbackDisplayed());
+		Assert.assertTrue("Attempted Inline Simple Assessment activity not displayed", SAactivity.isFeedbackDisplayed());
 		logPassMessage("Attempted Inline Simple Assessment activity displayed successfully");
 		SAactivity.closeSAActivity();
 		ebookReader.closeEbook();

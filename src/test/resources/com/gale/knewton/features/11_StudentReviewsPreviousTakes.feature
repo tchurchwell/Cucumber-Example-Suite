@@ -6,7 +6,7 @@ and launch already attempted Simple Assessment, Inline Assessment and SAA activi
 then I should be able to verify the recorded score on Assessment Actvity Information page
 and Review the attempted activity
 
-@StuReviewsSA @SmokeAndersen @SmokeGulati
+@StuReviewsSA @StuReviewActivity @SmokeAndersen @SmokeGulati
 Scenario: Student review the previous take of Simple Assessment distinct activity
 	Given I should be on Student's LPN page
 	And Attempted Simple Assessment activity is present on LPN
@@ -17,7 +17,7 @@ Scenario: Student review the previous take of Simple Assessment distinct activit
 	When I click on Review button
 	Then Attempted Simple Assessment activity is displayed
 	
-@StuReviewsSAA @SmokeAndersen
+@StuReviewsSAA @SmokeGulati
 Scenario: Student review the previous take of SAA activity
 	Given I should be on Student's LPN page
 	And Attempted SAA activity is present on LPN
@@ -28,7 +28,7 @@ Scenario: Student review the previous take of SAA activity
 	When I click on Review button
 	Then Attempted SAA activity is displayed 
 	
-@StuReviewsInlineSA @SmokeAndersen @SmokeGulati
+@StuReviewsInlineSA @StuReviewActivity @SmokeAndersen @SmokeGulati
 Scenario: Student review the previous take of Inline Simple Assessment activity
 	Given I should be on chapter LPN
 	And Attempted Inline Simple Assessment activity is present on LPN
@@ -37,4 +37,5 @@ Scenario: Student review the previous take of Inline Simple Assessment activity
 	And Recorded Score is displayed same as score on LPN's Inline Simple Assessment activity link
 	And Review button is displayed
 	When I click on Review button
-	Then Attempted Inline Simple Assessment activity is displayed 
+	Then Attempted Inline Simple Assessment activity is displayed
+	 

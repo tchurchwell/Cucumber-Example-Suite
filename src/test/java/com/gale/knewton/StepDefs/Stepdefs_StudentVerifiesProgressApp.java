@@ -14,6 +14,9 @@ public class Stepdefs_studentVerifiesProgressApp extends BaseWebComponent {
 	private MindTapLPNPage mindTapLpn;
 	private ProgressApp progressApp = new ProgressApp();;
 	
+	String ScoreOnProgressApp;
+	String LPNScore;
+	
 	@When("^I click on progress app icon from App dock$")
 	public void i_click_on_progress_app_icon_from_App_dock() {
 	mindTapLpn = new MindTapLPNPage();
@@ -41,6 +44,12 @@ public class Stepdefs_studentVerifiesProgressApp extends BaseWebComponent {
       mindTapLpn.clickProgressApp();
 	  Assert.assertTrue("Student's progress app not displayed", progressApp.isStudentProgressAppDisplayed());
 	  logPassMessage("Student's progress app displayed successfully");	    
-	}	
+	}
+	
+	@Then("^Correct score is displayed for attempted Simple Assessment activity$")
+	public void correct_score_is_displayed_for_attempted_simple_assessment_activity()  {
+	  ScoreOnProgressApp =  progressApp.getSAScore();
+	}
+	
 	
 }

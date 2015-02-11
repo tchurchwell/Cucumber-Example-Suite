@@ -357,6 +357,26 @@ public class BaseWebComponent {
 		
 	}
 	
+	public void switchToFrameByXpath(String element)
+	{
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath(element)));
+	}
+	
+	public void switchToFrameById(String element)
+	{
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id(element)));
+	}
+	
+	public void switchToFrameByClass(String element)
+	{
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.className(element)));
+	}
+	
+	public void switchToFrameByCss(String element)
+	{
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.cssSelector(element)));
+	}
+	
 
 	public void switchToDefaultContent() {
 		driver.switchTo().defaultContent();

@@ -291,7 +291,7 @@ public void collapseLPNFolders(){
 	public String getSAALpnScore(){
 		activityDynamicXpath = getLocator(img_SAAlpnScore_xpath,
 				PropFileHandler.readProperty("saaActivityTitle",(YamlReader.getData("propertyfilepath"))));
-		String score = findElementByXpath(activityDynamicXpath).getText();
+		String score = waitAndLocateElementByXpath(activityDynamicXpath).getText();
 		score = score.split(":")[1].substring(1);
 		return score;
 	}

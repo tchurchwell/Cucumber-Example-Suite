@@ -1,9 +1,6 @@
 package com.gale.knewton.pageObjects;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.util.PropFileHandler;
 import com.gale.knewton.util.YamlReader;
@@ -151,11 +148,9 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 	
 	public boolean isFeedbackDisplayed(){
 		boolean flag;
-		hardWait(1);
-		switchToFrame(findElementByCssPath(grove_frame_css));
-		hardWait(3);
-		switchToFrame(findElementById(frame2_Submit_id));
-		flag = findElementByXpath(feedback_xpath).isDisplayed();
+		switchToFrameByCss(grove_frame_css);
+		switchToFrameById(frame2_Submit_id);
+		flag = waitAndLocateElementByXpath(feedback_xpath).isDisplayed();
 		switchToDefaultContent();
 		return flag;
 	}
@@ -165,7 +160,7 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementByCssPath(ereader_frame_css));
 		switchToFrame(findElementByClass(frame2inline_Submit_class));
 		switchToFrame(findElementById(frame3inline_Submit_id));
-		flag = findElementByXpath(feedback_xpath).isDisplayed();
+		flag = waitAndLocateElementByXpath(feedback_xpath).isDisplayed();
 		switchToDefaultContent();
 		return flag;
 	}
@@ -238,15 +233,6 @@ public class SimpleAssessmentActivityPage extends BaseWebComponent {
 		switchToFrame(findElementById(frame3inline_Submit_id));
 		findElementByXpath(btn_submit_xpath).click();
 		switchToDefaultContent();
-	}
-	
-	public boolean isAttemptedFeedbackDisplayed(){
-		hardWait(1);
-		switchToFrame(findElementByCssPath(grove_frame_css));
-		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.id(frame2_Submit_id)));
-		flag = findElementByXpath(feedback_xpath).isDisplayed();
-		switchToDefaultContent();
-		return flag;
 	}
 	
 	public void closeSAActivity(){
