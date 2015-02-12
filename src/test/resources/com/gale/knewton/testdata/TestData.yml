@@ -1,5 +1,5 @@
 baseurl: https://s-login.cengage.com/cb/login.htm
-browser: ie
+browser: firefox
 chromeDriverPath: "src/test/resources/com/gale/knewton/drivers/chromedriver.exe"
 IEDriverPath: "src/test/resources/com/gale/knewton/drivers/IEDriverServer.exe"
 seleniumserver: local

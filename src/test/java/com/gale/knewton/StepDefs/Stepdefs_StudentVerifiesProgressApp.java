@@ -5,6 +5,8 @@ import org.junit.Assert;
 import com.gale.knewton.base.BaseWebComponent;
 import com.gale.knewton.pageObjects.MindTapLPNPage;
 import com.gale.knewton.pageObjects.ProgressApp;
+import com.gale.knewton.util.PropFileHandler;
+import com.gale.knewton.util.YamlReader;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -49,6 +51,10 @@ public class Stepdefs_studentVerifiesProgressApp extends BaseWebComponent {
 	@Then("^Correct score is displayed for attempted Simple Assessment activity$")
 	public void correct_score_is_displayed_for_attempted_simple_assessment_activity()  {
 	  ScoreOnProgressApp =  progressApp.getSAScore();
+	  LPNScore = PropFileHandler.readProperty("SALpnScore", YamlReader.getData("propertyfilepath"));
+	  Assert.assertEquals("Simple Assessment Score at progress app is not same as on LPN", ScoreOnProgressApp, LPNScore);
+	  logPassMessage("Simple Assessment Score at progress app is same as on LPN");
+	  progressApp.closeProgressApp();
 	}
 	
 	

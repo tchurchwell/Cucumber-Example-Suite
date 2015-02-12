@@ -320,7 +320,9 @@ public void collapseLPNFolders(){
 		activityDynamicXpath = getLocator(img_expandInline_xpath,
 				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
 		hardWait(1);
-		findElementByXpath(activityDynamicXpath).click();
+		if(findElementByXpath(activityDynamicXpath).getAttribute("src").contains("arrow_right")){
+			findElementByXpath(activityDynamicXpath).click();
+		}
 	}
 
 }

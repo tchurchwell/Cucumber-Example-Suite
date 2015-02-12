@@ -48,25 +48,7 @@ public class ProgressApp extends BaseWebComponent {
 		switchToDefaultContent();
 		return SAscore;
 	}
-	
-	public String getInlineSAScore(){
-		switchToFrame(findElementByClass(frame_ProgressApp_class));
-		DynamicXpath = getLocator(lbl_Score_xpath,
-				PropFileHandler.readProperty("InlineSimpleAssessmentActivityTitle",(YamlReader.getData("propertyfilepath"))));
-		String inlineSAscore = findElementByXpath(DynamicXpath).getText();
-		switchToDefaultContent();
-		return inlineSAscore;
-	}
-	
-	public String getSAAScore(){
-		switchToFrame(findElementByClass(frame_ProgressApp_class));
-		DynamicXpath = getLocator(lbl_Score_xpath,
-				PropFileHandler.readProperty("saaActivityTitle",(YamlReader.getData("propertyfilepath"))));
-		String SAAscore = findElementByXpath(DynamicXpath).getText();
-		switchToDefaultContent();
-		return SAAscore;
-	}
-	
+		
 	public void closeProgressApp(){
 		 findElementByClass(icon_CloseProgressApp_class).click();
 	}

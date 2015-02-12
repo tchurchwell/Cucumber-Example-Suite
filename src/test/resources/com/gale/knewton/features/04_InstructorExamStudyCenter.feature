@@ -13,7 +13,7 @@ Feature: Instructor access Exam Study Center, verify its linking on LPN and Prev
 	 When I save ESC activity after completing required details on Config page and following MindTap Description page
 	 Then created ESC should be linked to LPN
 	 
-	@InstLaunchESC  
+	@InstLaunchESC  @SmokeAndersen @SmokeGulati
   Scenario Outline: Launch ESC Activity as Instructor
  	Given I should be on instructor's LPN page
  	When I click the already linked ESC activity
